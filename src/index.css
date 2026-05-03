@@ -1,0 +1,30 @@
+:root {
+  --neutral-color-0: #141417;
+  --neutral-color-1: #F3F0F2;
+  --neutral-color-2: #E5E1E4;
+  --neutral-color-3: #929093;
+  --neutral-color-4: #18181B;
+  --neutral-color-5: #0B0B0D;
+  --primary-color-0: #22D3EE;
+  --secondary-color-0: #26B885;
+  --secondary-color-1: #C0FEDD;
+  --secondary-color-2: #1BA476;
+  --tertiary-color-0: #6366EA;
+  --tertiary-color-1: #C0C1FB;
+
+  --home-page-big-font: 400 'Archivo Black';
+  --home-page-sub-font: 700 'Syne';
+  --aladin-font: 'Aladin', system-ui;
+  --manrope-font: 'Manrope', sans-serif;
+  --letter-spacing: -0.02em;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+#root {
+  width: 100vw;
+  background-color: var(--neutral-color-0);
+}
