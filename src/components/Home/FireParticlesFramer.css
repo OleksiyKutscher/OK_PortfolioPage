@@ -1,0 +1,20 @@
+.fire-container {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    filter: contrast(150%) brightness(120%);
+    overflow: hidden;
+}
+
+.fire {
+    height: 50vh;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.fire-particle {
+    position: absolute;
+    bottom: -10px;
+    border-radius: 50%;
+    filter: blur(1px);
+}

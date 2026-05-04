@@ -6,7 +6,7 @@ import LinkedInIcon from '../assets/icons/logos/linkedin.png';
 export default function Header() {
   return (
     <div className="header">
-      <span className="header-name">Oleksiy Kutscher</span>
+      <a href="/"><span className="header-name">Oleksiy Kutscher</span></a>
       <div className="header-links">
         <a><span className="header-link">About Me</span></a>
         <a><span className="header-link">Tech Stack</span></a>

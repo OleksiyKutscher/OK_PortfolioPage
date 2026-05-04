@@ -1,7 +1,7 @@
-import { useState } from 'react'
 import './App.css'
 import Header from './components/Header';
-import Home from './components/Home';
+import Home from './components/Home/Home.jsx';
+import AboutMe from './components/AboutMe/AboutMe.jsx';
 
 function App() {
 
@@ -9,6 +9,7 @@ function App() {
     <>
       <Header />
       <Home />
+      <AboutMe />
     </>
   )
 }

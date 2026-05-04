@@ -12,19 +12,70 @@
   --tertiary-color-0: #6366EA;
   --tertiary-color-1: #C0C1FB;
 
-  --home-page-big-font: 400 'Archivo Black';
-  --home-page-sub-font: 700 'Syne';
+  --home-big-font: 'Archivo Black', sans-serif;
+  --home-sub-font: 'Syne Variable', sans-serif;
   --aladin-font: 'Aladin', system-ui;
   --manrope-font: 'Manrope', sans-serif;
+  --alexandria-font: 'Alexandria Variable', sans-serif;
   --letter-spacing: -0.02em;
+
+  --header-height: 50px;
 }
 
 html, body {
   margin: 0;
   padding: 0;
+  scrollbar-gutter: stable;
 }
 
 #root {
   width: 100vw;
+  height: 100vh;
   background-color: var(--neutral-color-0);
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* Gilt für die gesamte Seite */
+::selection {
+  background-color: var(--primary-color-0);
+  color: var(--neutral-color-0);
+}
+::-moz-selection {
+  background-color: var(--primary-color-0);
+  color: var(--neutral-color-0);
+}
+
+h1 {
+  font-family: var(--alexandria-font);
+  font-weight: bold;
+  font-size: 5.5vw;
+  color: var(--neutral-color-2);
+}
+
+/* Breite der Leiste */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Hintergrund der Leiste */
+::-webkit-scrollbar-track {
+  background: var(--neutral-color-0);
+  border: 1px solid black;
+  border-radius: 10px;
+}
+
+/* Der Griff */
+::-webkit-scrollbar-thumb {
+  background: var(--primary-color-0);
+  border-radius: 10px;
+}
+
+/* Griff beim Drüberfahren */
+::-webkit-scrollbar-thumb:hover {
+  filter: drop-shadow(0 0 10px var(--primary-color-0));
 }

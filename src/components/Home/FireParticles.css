@@ -1,0 +1,9 @@
+#tsparticles {
+  position: absolute;
+  bottom: 0;   /* Klebt am Boden */
+  left: 0;
+  width: 100%;
+  height: 100vh; /* Die Partikel haben nur hier Platz zum "Leben" */
+  overflow: visible; /* Erlaubt ihnen, nach oben aus dem Container herauszuschweben */
+  pointer-events: none;
+}
