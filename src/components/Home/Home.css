@@ -5,7 +5,10 @@
     padding: 2vw 4vw;
     box-sizing: border-box;
     width: 100%;
-    height: calc(100% - var(--header-height));
+    height: calc(100vh - var(--header-height));
+    flex-shrink: 0;
+    overflow: hidden;
+    position: relative;
 }
 
 .home-gradient {
@@ -68,4 +71,10 @@
     margin-right: 2.5vw;
 }
 
+.text-gradient {
+    background: linear-gradient(to bottom, var(--tertiary-color-1) 50%, var(--neutral-color-2));
 
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}

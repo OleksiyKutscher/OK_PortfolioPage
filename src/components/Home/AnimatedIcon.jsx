@@ -1,15 +1,14 @@
-import { useEffect, useRef, useState } from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import gsap from "gsap";
-import { Observer } from "gsap/Observer";
 
-gsap.registerPlugin(Observer)
+import {useGSAP} from "@gsap/react";
+import {MasterTimelineContext} from "../../MasterTimelineContext.jsx";
 
-export default function AnimatedIcon({iconUrl, extraStyle}) {
-  const iconRef = useRef(null);
+//gsap.registerPlugin(Observer)
 
-  const [progress, setProgress] = useState(0); // 0 bis 1
+export default function AnimatedIcon({id, iconUrl, extraStyle, ref}) {
 
-  useEffect(() => {
+  /*useEffect(() => {
     // Observer erstellen
     const obs = Observer.create({
       target: window,         // Lauscht auf dem gesamten Fenster
@@ -66,11 +65,12 @@ export default function AnimatedIcon({iconUrl, extraStyle}) {
       ease: "power1.out"
     });
 
-  }, [progress]);
+  }, [progress]);*/
   return (
 
       <div
-        ref={iconRef}
+        id={id}
+        ref={ref}
         style={{
           position: "absolute",
           width: "4vw",
@@ -83,6 +83,7 @@ export default function AnimatedIcon({iconUrl, extraStyle}) {
           maskRepeat: "no-repeat",
           zIndex: "200",
           opacity: 0,
+          scale: 0,
           ...extraStyle
         }}
       />

@@ -26,14 +26,22 @@ html, body {
   margin: 0;
   padding: 0;
   scrollbar-gutter: stable;
+  box-sizing: border-box;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
 }
 
 #root {
-  width: 100vw;
-  height: 100vh;
-  background-color: var(--neutral-color-0);
-  overflow-x: hidden;
-  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  /*width: 100vw;
+  height: 100vh;*/
+  /*background-color: var(--neutral-color-0);*/
+  /*background: linear-gradient(85.56deg, var(--tertiary-color-0) -56.12%, var(--neutral-color-0) 37.12%);*/
+  /*overflow-x: hidden;
+  overflow-y: auto;*/
 }
 
 a {

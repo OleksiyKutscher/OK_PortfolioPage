@@ -8,8 +8,11 @@ function App() {
   return (
     <>
       <Header />
-      <Home />
-      <AboutMe />
+      <div id="content" className="content-container">
+        <Home />
+        <AboutMe />
+        <div style={{ marginTop: '100vh', width:'100px', height:'100px', backgroundColor: "red" }}></div>
+      </div>
     </>
   )
 }

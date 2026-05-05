@@ -3,14 +3,15 @@ import {Observer} from "gsap/Observer";
 import gsap from "gsap";
 import DownArrowSrc from "../../assets/icons/down_arrow.png";
 import "./ScrollDown.css";
+import {useGSAP} from "@gsap/react";
 
-export default function ScrollDown() {
-  const scrollDownRef = useRef(null);
+export default function ScrollDown({containerRef, ref}) {
+  /*const scrollDownRef = useRef(null);
   const loopRef = useRef(null);
 
   const [progress, setProgress] = useState(0); // 0 bis 1
 
-  useEffect(() => {
+  useGSAP(() => {
     // 1. Loop-Animation erstellen und in Ref speichern
     loopRef.current = gsap.to(scrollDownRef.current, {
       scale: 1.1,
@@ -39,7 +40,7 @@ export default function ScrollDown() {
   }, []);
 
     // Update der Opacity basierend auf dem State
-  useEffect(() => {
+  useGSAP(() => {
     let opacityValue;
     if (progress >= 4) {
       opacityValue = 5 - progress;
@@ -61,11 +62,13 @@ export default function ScrollDown() {
       loopRef.current.play();
     }
 
-  }, [progress]);
+  }, [progress]);*/
   return (
-    <div className="scroll-container" ref={scrollDownRef}>
-      <div className="scroll-icon" style={{"--icon-url": `url(${DownArrowSrc})`}}></div>
-      <span className="text">Scroll down</span>
+    <div className="scroll-container" ref={containerRef}>
+      <div className="scroll-elements" ref={ref}>
+        <div className="scroll-icon" style={{"--icon-url": `url(${DownArrowSrc})`}}></div>
+        <span className="text">Scroll down</span>
+      </div>
     </div>
   );
 }

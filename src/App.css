@@ -1,0 +1,8 @@
+.content-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding-top: var(--header-height);
+    position: relative;
+    background: linear-gradient(85.56deg, var(--tertiary-color-0) -56.12%, var(--neutral-color-0) 37.12%);
+}

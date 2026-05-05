@@ -8,6 +8,7 @@
     padding: 2vw 4vw;
     width: 100%;
     height: calc(100% - var(--header-height));
+    /*flex-shrink: 0;*/
 }
 
 .spread-text {
