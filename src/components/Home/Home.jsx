@@ -108,7 +108,7 @@ export default function Home() {
         invalidateOnRefresh: true,
         markers: true, // 👈 Aktiviere Marker zum Debuggen!,
         onUpdate: (self) => {
-          console.log(self.progress)
+          //console.log(self.progress)
           // Wenn man ganz oben ist (progress 0), sicherstellen, dass Loop aus ist
           if (self.progress <= 0.01 || self.progress >= 0.99) {
             clickLoopRef.current?.pause();
@@ -200,27 +200,43 @@ export default function Home() {
     <section id="home" className="home-container" ref={homeContainer}>
       {/*<div className="home-gradient"></div>*/}
       {/*<FireParticlesFramer n_particles={20} />*/}
-      <div className="home-sub-container">
+      <div className="home-section">
+        <div className="home-sub-container">
 
-        <span className="home-sub left" ref={leftText}>AI & ML Expert</span>
-        <Portrait />
-        <AnimatedIcon id="move" iconUrl={MoveIconSrc} extraStyle={{right: "2vw", backgroundColor: "var(--secondary-color-2)"}} ref={moveRef} />
+          <span className="home-sub left" ref={leftText}>AI & ML Expert</span>
+          {/*<Portrait />*/}
 
-        {/*<div id="box" style={{display: "block", width: "100px", height:"100px", backgroundColor: "red"}}></div>*/}
-      </div>
-      <span className="home-main">Oleksiy Kutscher</span>
-      <div className="home-sub-container">
-        <span className="home-sub highlight" onClick={handleClick}>{text}</span>
-        <AnimatedIcon id="click" iconUrl={ClickIconSrc} extraStyle={{left: "29vw", backgroundColor: "var(--secondary-color-1)"}} ref={clickRef} />
-        {/*<div id="click2" style={{width: "40px", height: "40px",backgroundColor: "red", opacity: 0, scale: 0}} ref={clickRef}/>*/}
-        <span className="home-sub right" ref={rightText}>Software Developer</span>
-      </div>
-      {/*<ScrollDown containerRef={scrollDownContainerRef} ref={scrollDownRef} />*/}
-      <div className="scroll-container" ref={scrollDownContainerRef}>
-        <div className="scroll-elements" ref={scrollDownRef}>
-          <div className="scroll-icon" style={{"--icon-url": `url(${DownArrowSrc})`}}></div>
-          <span className="text">Scroll down</span>
+
+          {/*<div id="box" style={{display: "block", width: "100px", height:"100px", backgroundColor: "red"}}></div>*/}
         </div>
+        <span className="home-main">Oleksiy <br/> Kutscher</span>
+        <div className="home-sub-container bottom-sub">
+          <span className="home-sub highlight" onClick={handleClick}>{text}</span>
+          <AnimatedIcon id="click" iconUrl={ClickIconSrc}
+                        extraStyle={{left: "16vw", top: "3vw", backgroundColor: "var(--secondary-color-1)"}}
+                        ref={clickRef}/>
+          {/*<div id="click2" style={{width: "40px", height: "40px",backgroundColor: "red", opacity: 0, scale: 0}} ref={clickRef}/>*/}
+          <span className="home-sub right" ref={rightText}>Software Developer</span>
+        </div>
+        {/*<ScrollDown containerRef={scrollDownContainerRef} ref={scrollDownRef} />
+        <div className="scroll-container" ref={scrollDownContainerRef}>
+          <div className="scroll-elements" ref={scrollDownRef}>
+            <div className="scroll-icon" style={{"--icon-url": `url(${DownArrowSrc})`}}></div>
+            <span className="text">Scroll down</span>
+          </div>
+        </div>*/}
+
+      </div>
+      <Portrait/>
+      <AnimatedIcon
+        id="move"
+        iconUrl={MoveIconSrc}
+        extraStyle={{right: "7vw", top: "30vw", backgroundColor: "var(--secondary-color-2)"}}
+        ref={moveRef}
+      />
+      <div className="scroll-indicator animate-float">
+        <span className="scroll-text">SCROLL</span>
+        <div className="scroll-line"><div className="scroll-ping animate-line-draw" /></div>
       </div>
     </section>
   );

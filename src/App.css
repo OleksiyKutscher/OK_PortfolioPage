@@ -5,4 +5,16 @@
     padding-top: var(--header-height);
     position: relative;
     background: linear-gradient(85.56deg, var(--tertiary-color-0) -56.12%, var(--neutral-color-0) 37.12%);
+
+}
+
+.technical-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    background-image:
+        linear-gradient(to right, rgba(22, 120, 128, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(22, 120, 128, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px;
 }

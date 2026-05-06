@@ -1,10 +1,13 @@
 .portrait-container {
     display: flex;
-    height: 20vw;
+    height: 30vw;
     border-radius: 40px;
     overflow: hidden;
     filter: drop-shadow(0 0 30px var(--primary-color-0));
     cursor: grab;
+    position: absolute;
+    top: 5vw;
+    right: 5vw;
 
     & img {
         object-fit: cover;
