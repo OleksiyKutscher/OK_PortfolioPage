@@ -29,21 +29,25 @@ export default function Home() {
   const homeContainer = useRef(null);
   const leftText = useRef(null);
   const rightText = useRef(null);
+  const hightlightText = useRef(null);
+  const titleText = useRef(null);
 
   const masterTl = useContext(MasterTimelineContext);
-  const scrollDownRef = useRef(null);
+  /*const scrollDownRef = useRef(null);
   const scrollDownContainerRef = useRef(null);
-  const scrollDownLoopRef = useRef(null);
+  const scrollDownLoopRef = useRef(null);*/
 
   const clickRef = useRef(null);
   const clickLoopRef = useRef(null);
   const moveRef = useRef(null);
   const moveLoopRef = useRef(null);
 
+  const portraitRef = useRef(null);
+
   useGSAP(() => {
-    const titleSplit = new SplitText('.home-main', {type: 'chars, words'});
+    const titleSplit = new SplitText(titleText.current, {type: 'chars, words'});
     const leftSplit = new SplitText(leftText.current, {type: 'chars, words'});
-    const highlightSplit = new SplitText('.highlight', {type: 'chars, words'})
+    const highlightSplit = new SplitText(hightlightText.current, {type: 'chars, words'})
     const rightSplit = new SplitText(rightText.current, {type: 'chars, words'});
 
     leftSplit.chars.forEach((char) => {char.classList.add("text-gradient")})
@@ -91,8 +95,8 @@ export default function Home() {
       opacity: 0,
       delay: 3,
     })*/
-    scrollDownLoopRef.current = createScrollDownLoop(scrollDownRef.current);
-    scrollDownLoopRef.current.resume();
+    /*scrollDownLoopRef.current = createScrollDownLoop(scrollDownRef.current);
+    scrollDownLoopRef.current.resume();*/
 
     clickLoopRef.current = createLoopTimeline(clickRef.current);
     moveLoopRef.current = createLoopTimeline(moveRef.current);
@@ -117,15 +121,15 @@ export default function Home() {
             clickLoopRef.current?.resume();
             moveLoopRef.current?.resume();
           }
-          if (self.progress >= 0.99) {
+          /*if (self.progress >= 0.99) {
             scrollDownLoopRef.current?.pause();
           } else {
             scrollDownLoopRef.current?.resume();
-          }
+          }*/
         },
       }
     })
-    tl.to(scrollDownContainerRef.current, {...fadeScaleOutVars(), overwrite: "auto"}, 0)
+    /*tl.to(scrollDownContainerRef.current, {...fadeScaleOutVars(), overwrite: "auto"}, 0)*/
     tl.to(clickRef.current, fadeScaleInVars(), 1);
     tl.to(clickRef.current, fadeScaleOutVars(), 2);
     tl.to(moveRef.current, fadeScaleInVars(), 1);
@@ -143,15 +147,29 @@ export default function Home() {
     })
     tl2.to(leftSplit.chars, {
       x: -600,
+      opacity: 0,
       ease: 'power2.out',
       //stagger: 0.07,
     },0)
-    tl2.to(rightSplit.chars, {
-      x: 600,
+    tl2.to(titleSplit.chars, {
+      x: -600,
+      opacity: 0,
       ease: 'power2.out',
+      delay: 0.1,
+    }, 0)
+    tl2.to(highlightSplit.chars, {
+      x: -600,
+      opacity: 0,
+      ease: 'power2.out',
+      delay: 0.2,
+    }, 0)
+    tl2.to(rightSplit.chars, {
+      x: -700,
+      opacity: 0,
+      ease: 'power2.out',
+      delay: 0.3,
       //stagger: -0.07,
     },0)
-      //.to(rightText.current, {x: 100},0)
 
     //const masterTL = gsap.timeline({})
     masterTl.add(tl);
@@ -160,62 +178,27 @@ export default function Home() {
     masterTl,
     clickRef, clickLoopRef,
     moveRef, moveLoopRef,
-    scrollDownRef, scrollDownLoopRef, scrollDownContainerRef
-  ], {scope: homeContainer});
-
-  /*useGSAP(() => {
-    clickLoopRef.current = gsap.timeline({
-      paused: true,
-    })
-    clickLoopRef.current.to(clickRef.current, {
-      x: "+=10", // Kleine Bewegung nach rechts
-      repeat: -1,
-      yoyo: true,
-      duration: 1.5,
-      ease: "sine.inOut",
-      overwrite: 'auto',
-    }, 0);
-
-    // Für eine echte Acht würde man hier eine zweite Animation für die Y-Achse
-    // mit doppelter Geschwindigkeit starten (wie in den vorigen Beispielen).
-    clickLoopRef.current.to(clickRef.current, {
-      y: "+=5",
-      repeat: -1,
-      yoyo: true,
-      duration: 0.75,
-      ease: "sine.inOut",
-      overwrite: 'auto',
-    }, 0);
-    console.log("Davor: ", clickLoopRef.current.paused());
-    if (startClickAnimation) {
-      clickLoopRef.current.resume();
-    } else {
-      clickLoopRef.current.pause();
-      //gsap.killTweensOf('#click');
-    }
-    console.log("Danach: ", clickLoopRef.current.paused());
-  }, {dependencies: [startClickAnimation, clickLoopRef, clickRef]});*/
+    /*scrollDownRef, scrollDownLoopRef, scrollDownContainerRef,*/
+    portraitRef, leftText, rightText, titleText, hightlightText
+  ]);
 
   return (
-    <section id="home" className="home-container" ref={homeContainer}>
+    <section id="home" ref={homeContainer}>
       {/*<div className="home-gradient"></div>*/}
       {/*<FireParticlesFramer n_particles={20} />*/}
       <div className="home-section">
         <div className="home-sub-container">
-
           <span className="home-sub left" ref={leftText}>AI & ML Expert</span>
-          {/*<Portrait />*/}
-
-
-          {/*<div id="box" style={{display: "block", width: "100px", height:"100px", backgroundColor: "red"}}></div>*/}
         </div>
-        <span className="home-main">Oleksiy <br/> Kutscher</span>
+        <span className="home-main" ref={titleText}>Oleksiy <br/> Kutscher</span>
         <div className="home-sub-container bottom-sub">
-          <span className="home-sub highlight" onClick={handleClick}>{text}</span>
-          <AnimatedIcon id="click" iconUrl={ClickIconSrc}
-                        extraStyle={{left: "16vw", top: "3vw", backgroundColor: "var(--secondary-color-1)"}}
-                        ref={clickRef}/>
-          {/*<div id="click2" style={{width: "40px", height: "40px",backgroundColor: "red", opacity: 0, scale: 0}} ref={clickRef}/>*/}
+          <span className="home-sub highlight" onClick={handleClick} ref={hightlightText}>{text}</span>
+          <AnimatedIcon
+            id="click"
+            iconUrl={ClickIconSrc}
+            extraStyle={{left: "16vw", top: "3vw", backgroundColor: "var(--secondary-color-1)"}}
+            ref={clickRef}
+          />
           <span className="home-sub right" ref={rightText}>Software Developer</span>
         </div>
         {/*<ScrollDown containerRef={scrollDownContainerRef} ref={scrollDownRef} />
@@ -227,7 +210,7 @@ export default function Home() {
         </div>*/}
 
       </div>
-      <Portrait/>
+      {/*<Portrait ref={portraitRef}/>*/}
       <AnimatedIcon
         id="move"
         iconUrl={MoveIconSrc}

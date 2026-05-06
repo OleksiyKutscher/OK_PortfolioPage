@@ -2,18 +2,19 @@ import './Header.css';
 import DownloadIcon from '../assets/icons/download.png';
 import EmailIcon from '../assets/icons/email.png';
 import LinkedInIcon from '../assets/icons/logos/linkedin.png';
+import {navLinks} from '../../constants/index.js'
 
 export default function Header() {
   return (
     <div className="header">
       <a href="/"><span className="header-name">Oleksiy Kutscher</span></a>
-      <div className="header-links">
-        <a><span className="header-link">About Me</span></a>
-        <a><span className="header-link">Tech Stack</span></a>
-        <a><span className="header-link">Showcase</span></a>
-        <a><span className="header-link">Professional Experience</span></a>
-        <a><span className="header-link">Education</span></a>
-      </div>
+      <ul className="header-links">
+        {navLinks.map((link) => (
+          <li key={link.id}>
+            <a href={`#${link.id}`} >{link.title}</a>
+          </li>
+        ))}
+      </ul>
       <div className="header-buttons">
         <a href="/CV_Kutscher.pdf" download={true}>
           <button className="header-button" >

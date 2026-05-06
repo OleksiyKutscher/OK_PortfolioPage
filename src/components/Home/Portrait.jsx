@@ -2,9 +2,9 @@ import PortraitImg from "../../assets/images/portrait.jpg";
 import {motion} from "motion/react";
 import "./Portrait.css"
 
-export default function Portrait() {
+export default function Portrait({ref}) {
   return (
-    <motion.div className="portrait-container" drag={true} dragSnapToOrigin={true} whileHover="hover" initial="rest" style={{cursor: "grab"}}>
+    <motion.div className="portrait-container" drag={true} dragSnapToOrigin={true} whileHover="hover" initial="rest" style={{cursor: "grab"}} ref={ref}>
     <img src={PortraitImg} alt="Portrait" draggable="false" />
     <motion.svg
       className="border-svg"

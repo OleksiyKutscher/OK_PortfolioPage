@@ -79,8 +79,8 @@
 .home-sub.highlight {
     color: var(--primary-color-0);
     /*margin-left: auto;
-    margin-right: 4vw;*/
-    width: 22vw;
+    margin-right: 4vw;
+    width: 22vw;*/
     font-size: 52px;
 
     &:hover {

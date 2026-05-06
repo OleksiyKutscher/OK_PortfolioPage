@@ -1,0 +1,39 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--neutral-color-4);
+    border-radius: 20px;
+    width: 300px;
+    height: 300px;
+    padding: 24px;
+    gap: 12px;
+    /*width: 25vw;
+    height: 25vw;
+    padding: 2vw;
+    gap: 1vw;*/
+
+    & .icon {
+        width: 35px;
+        height: 35px;
+        /*width: 3vw;
+        height: 3vw;*/
+        background-color: var(--primary-color-0);
+    }
+
+    & h2 {
+        color: var(--neutral-color-2);
+        font-family: var(--space-grotesk-font);
+        font-weight: 500;
+        font-size: 38px/*3vw;*/
+    }
+
+    & p {
+        color: var(--primary-color-1);
+        font-family: var(--space-grotesk-font);
+        font-weight: normal;
+        font-size: 14px;
+        margin-top: 24px;
+        /*font-size: 1.2vw;
+        margin-top: 2vw;*/
+    }
+}

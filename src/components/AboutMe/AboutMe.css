@@ -1,14 +1,8 @@
 .about-me-container {
-    display: flex;
     flex-direction: column;
     align-items: flex-start;
     z-index: 10;
-    position: relative;
-    box-sizing: border-box;
-    padding: 2vw 4vw;
-    width: 100%;
-    height: calc(100% - var(--header-height));
-    /*flex-shrink: 0;*/
+    padding-top: 10vw;
 }
 
 .spread-text {
@@ -19,8 +13,8 @@
 }
 
 .title-text {
-    font-family: var(--alexandria-font);
-    font-weight: bold;
+    font-family: var(--space-grotesk-font);
+    font-weight: 700;
     font-size: 8vw;
     color: var(--neutral-color-2);
 }

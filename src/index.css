@@ -6,6 +6,7 @@
   --neutral-color-4: #18181B;
   --neutral-color-5: #0B0B0D;
   --primary-color-0: #22D3EE;
+  --primary-color-1: #B9CACB;
   --secondary-color-0: #26B885;
   --secondary-color-1: #C0FEDD;
   --secondary-color-2: #1BA476;
@@ -17,6 +18,7 @@
   --aladin-font: 'Aladin', system-ui;
   --manrope-font: 'Manrope', sans-serif;
   --alexandria-font: 'Alexandria Variable', sans-serif;
+  --space-grotesk-font: 'Space Grotesk Variable', sans-serif;
   --letter-spacing: -0.02em;
 
   --header-height: 50px;
@@ -30,7 +32,9 @@ html, body {
 }
 
 *, *::before, *::after {
-  box-sizing: inherit;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 #root {
@@ -44,9 +48,21 @@ html, body {
   overflow-y: auto;*/
 }
 
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  /* Oft nicht nötig, da ul das meiste regelt */
+}
+
 a {
   text-decoration: none;
+  color: inherit; /* Übernimmt die Textfarbe des Elternelements */
 }
+
 
 /* Gilt für die gesamte Seite */
 ::selection {
@@ -59,10 +75,15 @@ a {
 }
 
 h1 {
-  font-family: var(--alexandria-font);
+  margin: 0;
+  font-family: var(--space-grotesk-font);
   font-weight: bold;
-  font-size: 5.5vw;
+  font-size: 8vw;
   color: var(--neutral-color-2);
+}
+
+h2 {
+  margin: 0;
 }
 
 /* Breite der Leiste */
@@ -86,4 +107,21 @@ h1 {
 /* Griff beim Drüberfahren */
 ::-webkit-scrollbar-thumb:hover {
   filter: drop-shadow(0 0 10px var(--primary-color-0));
+}
+
+section {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  padding: 2vw 4vw;
+  box-sizing: border-box;
+  width: 100%;
+  height: calc(100vh - var(--header-height));
+  flex-shrink: 0;
+  overflow: hidden;
+  position: relative;
+}
+
+p {
+  margin: 0;
 }

@@ -27,7 +27,7 @@
     gap: 2vw;
 }
 
-.header-links span {
+.header-links li {
     font-family: "Manrope", sans-serif;
     color:  var(--neutral-color-3);
     cursor: pointer;
