@@ -5,13 +5,13 @@ import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import {SplitText} from "gsap/all";
 
-export default function AboutMe() {
-  const masterTl = useContext(MasterTimelineContext);
+export default function AboutMe({masterTl}) {
+  //const masterTl = useContext(MasterTimelineContext);
   const spreadTextRef = useRef(null);
   const titleRef = useRef(null);
   const descriptionRef = useRef(null);
 
-  useGSAP(() => {
+  /*useGSAP(() => {
     const spreadSplit = new SplitText(spreadTextRef.current, {type: 'chars, words'});
     const titleSplit = new SplitText(titleRef.current, {type: 'chars, words'});
     const descriptionSplit = new SplitText(descriptionRef.current, {type: 'words, lines'});
@@ -54,8 +54,8 @@ export default function AboutMe() {
       //duration: 0.3,
       stagger: 0.07,
     },2)
-    masterTl.add(tl);
-  }, [masterTl, spreadTextRef,  titleRef, descriptionRef]);
+    masterTl.current.add(tl);
+  }, [masterTl, spreadTextRef,  titleRef, descriptionRef]);*/
   return (
     <section id="about-me" className="about-me-container">
       <span className="spread-text" ref={spreadTextRef}>CRAFTING DIGITAL EXCELLENCE</span>

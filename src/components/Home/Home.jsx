@@ -15,10 +15,12 @@ import gsap from "gsap";
 import {MasterTimelineContext} from "../../MasterTimelineContext.jsx";
 import {createLoopTimeline, createScrollDownLoop, fadeScaleInVars, fadeScaleOutVars} from "./animations.js";
 import DownArrowSrc from "../../assets/icons/down_arrow.png";
+import PortraitImg from "../../assets/images/portrait.jpg";
+import CodeImg from "../../assets/images/code.png";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-export default function Home() {
+export default function Home({masterTl}) {
   const softTexts = ["creative", "proactive", "smart"]
   const [text, setText] = useState(softTexts[0]);
   const [count, setCount] = useState(1);
@@ -32,11 +34,6 @@ export default function Home() {
   const hightlightText = useRef(null);
   const titleText = useRef(null);
 
-  const masterTl = useContext(MasterTimelineContext);
-  /*const scrollDownRef = useRef(null);
-  const scrollDownContainerRef = useRef(null);
-  const scrollDownLoopRef = useRef(null);*/
-
   const clickRef = useRef(null);
   const clickLoopRef = useRef(null);
   const moveRef = useRef(null);
@@ -44,7 +41,7 @@ export default function Home() {
 
   const portraitRef = useRef(null);
 
-  useGSAP(() => {
+  /*useGSAP(() => {
     const titleSplit = new SplitText(titleText.current, {type: 'chars, words'});
     const leftSplit = new SplitText(leftText.current, {type: 'chars, words'});
     const highlightSplit = new SplitText(hightlightText.current, {type: 'chars, words'})
@@ -94,9 +91,8 @@ export default function Home() {
       ease: 'bounce.out',
       opacity: 0,
       delay: 3,
-    })*/
-    /*scrollDownLoopRef.current = createScrollDownLoop(scrollDownRef.current);
-    scrollDownLoopRef.current.resume();*/
+    })
+
 
     clickLoopRef.current = createLoopTimeline(clickRef.current);
     moveLoopRef.current = createLoopTimeline(moveRef.current);
@@ -121,15 +117,9 @@ export default function Home() {
             clickLoopRef.current?.resume();
             moveLoopRef.current?.resume();
           }
-          /*if (self.progress >= 0.99) {
-            scrollDownLoopRef.current?.pause();
-          } else {
-            scrollDownLoopRef.current?.resume();
-          }*/
         },
       }
     })
-    /*tl.to(scrollDownContainerRef.current, {...fadeScaleOutVars(), overwrite: "auto"}, 0)*/
     tl.to(clickRef.current, fadeScaleInVars(), 1);
     tl.to(clickRef.current, fadeScaleOutVars(), 2);
     tl.to(moveRef.current, fadeScaleInVars(), 1);
@@ -172,26 +162,36 @@ export default function Home() {
     },0)
 
     //const masterTL = gsap.timeline({})
-    masterTl.add(tl);
-    masterTl.add(tl2);
+    masterTl.current.add(tl);
+    masterTl.current.add(tl2);
   }, [
     masterTl,
     clickRef, clickLoopRef,
     moveRef, moveLoopRef,
-    /*scrollDownRef, scrollDownLoopRef, scrollDownContainerRef,*/
     portraitRef, leftText, rightText, titleText, hightlightText
-  ]);
+  ]);*/
 
   return (
-    <section id="home" ref={homeContainer}>
-      {/*<div className="home-gradient"></div>*/}
+    <section id="home" className="" ref={homeContainer}>
+      <div className="bg-spotlight"/>
       {/*<FireParticlesFramer n_particles={20} />*/}
-      <div className="home-section">
-        <div className="home-sub-container">
+      <div className="home-top">
+        <div className="home-top-text">
           <span className="home-sub left" ref={leftText}>AI & ML Expert</span>
+          <span className="home-title" ref={titleText}>Oleksiy <br/> Kutscher</span>
         </div>
-        <span className="home-main" ref={titleText}>Oleksiy <br/> Kutscher</span>
-        <div className="home-sub-container bottom-sub">
+        <div className="home-top-portrait">
+          <img src={PortraitImg} alt="Portrait" draggable="false" />
+          <AnimatedIcon
+            id="move"
+            iconUrl={MoveIconSrc}
+            extraStyle={{right: "7vw", top: "30vw", backgroundColor: "var(--secondary-color-2)"}}
+            ref={moveRef}
+          />
+        </div>
+      </div>
+      <div className="home-bottom">
+        <div className="creative-text-container">
           <span className="home-sub highlight" onClick={handleClick} ref={hightlightText}>{text}</span>
           <AnimatedIcon
             id="click"
@@ -199,28 +199,14 @@ export default function Home() {
             extraStyle={{left: "16vw", top: "3vw", backgroundColor: "var(--secondary-color-1)"}}
             ref={clickRef}
           />
-          <span className="home-sub right" ref={rightText}>Software Developer</span>
         </div>
-        {/*<ScrollDown containerRef={scrollDownContainerRef} ref={scrollDownRef} />
-        <div className="scroll-container" ref={scrollDownContainerRef}>
-          <div className="scroll-elements" ref={scrollDownRef}>
-            <div className="scroll-icon" style={{"--icon-url": `url(${DownArrowSrc})`}}></div>
-            <span className="text">Scroll down</span>
-          </div>
-        </div>*/}
-
+        <span className="home-sub right" ref={rightText}>Software Developer</span>
       </div>
-      {/*<Portrait ref={portraitRef}/>*/}
-      <AnimatedIcon
-        id="move"
-        iconUrl={MoveIconSrc}
-        extraStyle={{right: "7vw", top: "30vw", backgroundColor: "var(--secondary-color-2)"}}
-        ref={moveRef}
-      />
       <div className="scroll-indicator animate-float">
         <span className="scroll-text">SCROLL</span>
         <div className="scroll-line"><div className="scroll-ping animate-line-draw" /></div>
       </div>
+
     </section>
   );
 }

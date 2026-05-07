@@ -29,6 +29,8 @@ html, body {
   padding: 0;
   scrollbar-gutter: stable;
   box-sizing: border-box;
+  min-height: 100%;
+  height: auto;
 }
 
 *, *::before, *::after {
@@ -40,6 +42,8 @@ html, body {
 #root {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: auto;
   /*width: 100vw;
   height: 100vh;*/
   /*background-color: var(--neutral-color-0);*/
@@ -111,17 +115,37 @@ h2 {
 
 section {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: flex-start;
   padding: 2vw 4vw;
+  padding-top: calc(3vw + var(--header-height));
   box-sizing: border-box;
   width: 100%;
-  height: calc(100vh - var(--header-height));
+  height: 100vh;
   flex-shrink: 0;
   overflow: hidden;
   position: relative;
 }
 
+/*section::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+
+  background-image: inherit;
+  background-repeat: repeat;
+  background-size: 200px;
+  background-attachment: fixed;
+
+  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.3) 70%);
+  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.3) 70%);
+
+  pointer-events: none;
+}*/
 p {
   margin: 0;
 }
