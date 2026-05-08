@@ -15,7 +15,8 @@ import gsap from "gsap";
 import {MasterTimelineContext} from "../../MasterTimelineContext.jsx";
 import {createLoopTimeline, createScrollDownLoop, fadeScaleInVars, fadeScaleOutVars} from "./animations.js";
 import DownArrowSrc from "../../assets/icons/down_arrow.png";
-import PortraitImg from "../../assets/images/portrait.jpg";
+import PortraitImg from "../../assets/images/portrait_cut.jpg";
+import PortraitEditImg from "../../assets/images/portrait_cut_edit.png";
 import CodeImg from "../../assets/images/code.png";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
@@ -173,22 +174,30 @@ export default function Home({masterTl}) {
 
   return (
     <section id="home" className="" ref={homeContainer}>
-      <div className="bg-spotlight"/>
+
       {/*<FireParticlesFramer n_particles={20} />*/}
       <div className="home-top">
         <div className="home-top-text">
           <span className="home-sub left" ref={leftText}>AI & ML Expert</span>
           <span className="home-title" ref={titleText}>Oleksiy <br/> Kutscher</span>
         </div>
-        <div className="home-top-portrait">
+        <motion.div className="home-top-portrait" drag={true} dragSnapToOrigin={true} whileHover="hover">
           <img src={PortraitImg} alt="Portrait" draggable="false" />
+          <motion.div
+            className="portrait-highlight"
+            style={{backgroundImage: `url(${PortraitEditImg})`}}
+            variants={{
+              rest: { backgroundColor: "rgba(255, 255, 255, 0.0)" }, // Unsichtbar wenn die Maus nicht drüber ist
+              hover: { backgroundColor: "var(--primary-color-0)", display: "block" }  // Sichtbar beim Hover
+            }}
+          />
           <AnimatedIcon
             id="move"
             iconUrl={MoveIconSrc}
             extraStyle={{right: "7vw", top: "30vw", backgroundColor: "var(--secondary-color-2)"}}
             ref={moveRef}
           />
-        </div>
+        </motion.div>
       </div>
       <div className="home-bottom">
         <div className="creative-text-container">

@@ -12,10 +12,6 @@ import App from './App.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <div id="smooth-wrapper">
-      <div id="smooth-content">
-        <App />
-      </div>
-    </div>
+    <App />
   </StrictMode>,
 )

@@ -35,3 +35,26 @@
         opacity: 0.05;
     }
 }
+
+.top-glow {
+    z-index: 900;
+    pointer-events: none;
+    cursor: none;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    position: fixed;
+    inset: 0% auto auto 0%;
+    box-shadow: inset 0 2px 30px rgba(123, 239, 255, 0.7), inset 0 2px 130px 8px rgba(46, 231, 255, 0.37);
+}
+
+.bg-spotlight {
+    position: absolute;
+    mask-image: radial-gradient(circle, transparent 0%, black 80%);
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    pointer-events: none;
+    cursor: none;
+    z-index: 10;
+}

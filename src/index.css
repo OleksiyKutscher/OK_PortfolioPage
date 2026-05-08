@@ -125,6 +125,7 @@ section {
   flex-shrink: 0;
   overflow: hidden;
   position: relative;
+  z-index: 200;
 }
 
 /*section::after {

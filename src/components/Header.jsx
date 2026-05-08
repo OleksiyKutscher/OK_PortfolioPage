@@ -7,6 +7,7 @@ import {navLinks} from '../../constants/index.js'
 export default function Header() {
   return (
     <div className="header">
+
       <a href="/"><span className="header-name">Oleksiy Kutscher</span></a>
       <ul className="header-links">
         {navLinks.map((link) => (

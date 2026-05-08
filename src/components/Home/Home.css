@@ -10,23 +10,15 @@
     position: relative;
 }
 
-.bg-spotlight {
-    position: absolute;
-    left: 0px;
-    top: 0px;
-    mask-image: radial-gradient(circle, transparent 0%, black 80%);
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.6);
-    pointer-events: none;
-}
+
 
 .home-top {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: self-end;
     width: 100%;
+    margin-left: 5vw;
 }
 
 .home-top-text {
@@ -35,19 +27,54 @@
 }
 
 .home-top-portrait {
-    max-width: 250px;
+    display: flex;
+    width: 25vw;
+    max-width: 300px;
     border-radius: 40px;
     border: 2px solid var(--primary-color-0);
     overflow: hidden;
     z-index: 100;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
 
     & img {
         width: 100%;
         height: 100%;
         object-fit: contain;
         position: relative;
-        scale: 1.3;
-        top: 50px;
+    }
+
+    /*&:hover > .portrait-highlight {
+        display: block !important;
+        background-color: var(--primary-color-0);
+        animation: portrait-bg ease-in-out 0.8s;
+    }*/
+
+}
+
+@media (max-width: 1354px) {
+    .home-top-portrait {
+        max-width: 250px;
+    }
+}
+
+.portrait-highlight {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.0);
+    background-size: contain;
+    display: none;
+
+}
+
+@keyframes portrait-bg {
+    0% {
+         background-color: rgba(255, 255, 255, 0.0);
+    }
+    100% {
+        background-color: var(--primary-color-0);
     }
 }
 
