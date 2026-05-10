@@ -12,7 +12,7 @@ const navLinks = [
     title: 'Showcase',
   },
   {
-    id: 'profexp',
+    id: 'prof-exp',
     title: 'Professional Experience',
   },
   {
@@ -60,15 +60,184 @@ const abilities = [
   },
 ]
 
-const cloudPaths = [
-  "M170.4 204L225 64H264.2L318 204H280.8L269.2 170.6H218L206.2 204H170.4ZM227.4 144H260L243.8 97.6L227.4 144ZM328.038 204V64H362.438V204H328.038Z",
-"M425.14 246V155H453.22L475.19 198.68L497.03 155H525.11V246H504.05V184.25L474.93 239.5L445.68 183.73V246H425.14ZM542.765 246V155H565.125V226.89H610.235V246H542.765Z",
-"M488.6 403L473 333H490.7L499.2 376.4L511.4 333H527.5L539.7 376.4L548.2 333H565.3L549.7 403H531.5L519.2 357.9L506.8 403H488.6ZM593.536 404C588.469 404 583.869 402.833 579.736 400.5C575.669 398.1 572.403 394.9 569.936 390.9C567.536 386.833 566.336 382.3 566.336 377.3C566.336 372.233 567.469 367.7 569.736 363.7C572.003 359.7 575.103 356.533 579.036 354.2C582.969 351.8 587.403 350.6 592.336 350.6C597.336 350.6 601.736 351.767 605.536 354.1C609.336 356.433 612.303 359.667 614.436 363.8C616.636 367.867 617.736 372.567 617.736 377.9V381.4H582.236C582.769 383.333 583.603 385.033 584.736 386.5C585.869 387.967 587.269 389.1 588.936 389.9C590.603 390.7 592.403 391.1 594.336 391.1C596.469 391.1 598.403 390.733 600.136 390C601.936 389.267 603.403 388.2 604.536 386.8L615.236 395.7C611.903 398.633 608.536 400.767 605.136 402.1C601.736 403.367 597.869 404 593.536 404ZM582.236 372.2H602.736C602.269 370.333 601.536 368.733 600.536 367.4C599.536 366.067 598.336 365.033 596.936 364.3C595.536 363.567 593.969 363.2 592.236 363.2C590.569 363.2 589.036 363.567 587.636 364.3C586.303 364.967 585.169 365.967 584.236 367.3C583.369 368.633 582.703 370.267 582.236 372.2ZM625.816 403V331.8L642.016 329.3V358C643.749 355.867 645.916 354.2 648.516 353C651.182 351.733 654.049 351.1 657.116 351.1C661.382 351.1 665.216 352.3 668.616 354.7C672.082 357.033 674.816 360.167 676.816 364.1C678.882 368.033 679.916 372.433 679.916 377.3C679.916 382.1 678.849 386.467 676.716 390.4C674.582 394.333 671.682 397.467 668.016 399.8C664.416 402.133 660.382 403.3 655.916 403.3C653.116 403.3 650.482 402.733 648.016 401.6C645.616 400.4 643.549 398.767 641.816 396.7V403H625.816ZM651.716 390C654.116 390 656.216 389.467 658.016 388.4C659.882 387.267 661.349 385.733 662.416 383.8C663.482 381.867 664.016 379.667 664.016 377.2C664.016 374.733 663.482 372.567 662.416 370.7C661.349 368.767 659.882 367.267 658.016 366.2C656.149 365.067 654.049 364.5 651.716 364.5C649.716 364.5 647.916 364.867 646.316 365.6C644.782 366.267 643.349 367.3 642.016 368.7V385.9C643.282 387.167 644.749 388.167 646.416 388.9C648.082 389.633 649.849 390 651.716 390Z",
-
+const wordCloudData = [
+  { fontSize: "200", x:"170", y:"203.8", text: "AI"},
+  { fontSize: "130", x:"415", y:"246.345", text: "ML"},
+  { fontSize: "100", x:"470", y:"402.65", text: "Web"},
+  { fontSize: "100", x:"93", y:"479.65", text: "App"},
+  { fontSize: "50", x:"238", y:"245.825", text: "Python"},
+  { fontSize: "50", x:"50", y:"93.825", text: "GenAI"},
+  { fontSize: "50", x:"477", y:"443.825", text: "JavaScript"},
+  { fontSize: "40", x:"376", y:"470.827", text: "React"},
+  { fontSize: "40", x:"233", y:"418.76", text: "Java"},
+  { fontSize: "40", x:"735" /*720*/, y:"532.76", text: "C++"},
+  { fontSize: "40", x:"90" /*100*/, y:"543.76", text: "React Native"},
+  { fontSize: "30", x:"695", y:"398.247", text: "Frontend"},
+  { fontSize: "30", x:"342", y:"432.695", text: "Backend"},
+  { fontSize: "30", x:"735", y:"470.695", text: "UI/UX"},
+  { fontSize: "30", x:"292", y:"387.695", text: "API"},
+  { fontSize: "30", x:"10", y:"327.695", text: "Docker"},
+  { fontSize: "30", x:"0", y:"432.695", text: "Robust"},
+  { fontSize: "30", x:"185", y:"382.695", text: "Secure"},
+  { fontSize: "30", x:"363", y:"356.695", text: "Cloud"},
+  { fontSize: "30", x:"39", y:"286.695", text: "Agile"},
+  { fontSize: "30", x:"40", y:"511.695", text: "Mobile"},
+  { fontSize: "30", x:"352", y:"538.695", text: "Scalable"},
+  { fontSize: "30", x:"553", y:"509.695", text: "Full-Stack"},
+  { fontSize: "30", x:"755" /*746*/, y:"434.194", text: "Design"},
+  { fontSize: "30", x:"63", y:"233.362", text: "Multimodal"},
+  { fontSize: "30", x:"495", y:"478.695", text: "JQuery"},
+  { fontSize: "30", x:"617", y:"478.695", text: "GSAP"},
+  { fontSize: "50", x:"661", y:"327.825", text: "HTML"},
+  { fontSize: "50", x:"715", y:"371.825", text: "CSS"},
+  { fontSize: "50", x:"363", y:"403.825", text: "SQL"},
+  { fontSize: "50", x:"425", y:"513.825", text: "Git"},
+  { fontSize: "40", x:"40" /*50*/, y:"390.76", text: "SQLite"},
+  { fontSize: "30", x:"287", y:"495.695", text: "Postgres"},
+  { fontSize: "30", x:"488", y:"545.695", text: "Object-oriented"},
+  { fontSize: "100", x:"112", y:"349.65", text: "Data"},
+  { fontSize: "40", x:"376", y:"144.76", text: "PyTorch"},
+  { fontSize: "40", x:"683", y:"105.76", text: "Agents"},
+  { fontSize: "40", x:"618", y:"208.26", text: "Deep"},
+  { fontSize: "40", x:"618", y:"248.26", text: "Learning"},
+  { fontSize: "40", x:"736", y:"286.76", text: "W&B"},
+  { fontSize: "30", x:"581", y:"175.695", text: "Training"},
+  { fontSize: "30", x:"720", y:"185.695", text: "Inference"},
+  { fontSize: "30", x:"723", y:"215.695", text: "Clustering"},
+  { fontSize: "30", x:"546", y:"141.695", text: "Fine-tuning"},
+  { fontSize: "30", x:"508", y:"99.695", text: "PydanticAI"},
+  { fontSize: "40", x:"106", y:"129.76", text: "LLM"},
+  { fontSize: "40", x:"730", y:"154.76", text: "NLP"},
+  { fontSize: "40", x:"370", y:"99.76", text: "Audio"},
+  { fontSize: "40", x:"55", y:"165.76", text: "Video"},
+  { fontSize: "40", x:"40", y:"201.76", text: "Image"},
+  { fontSize: "40", x:"448", y:"281.76", text: "TensorFlow"},
+  { fontSize: "40", x:"292", y:"281.76", text: "Pandas"},
+  { fontSize: "40", x:"370", y:"320.009", text: "Plotly"},
+  { fontSize: "40", x:"515", y:"320.009", text: "Dash"},
+  { fontSize: "40", x:"128", y:"274.76", text: "Numpy"},
 ]
+
+const techMap = {
+  python: {
+    label: "Python",
+    iconUrl: "/src/assets/icons/logos/python.png",
+  },
+  pytorch: {
+    label: "PyTorch",
+    iconUrl: "/src/assets/icons/logos/pytorch.png",
+  },
+  tensorflow: {
+    label: "Tensorflow",
+    iconUrl: "/src/assets/icons/logos/tensorflow.png",
+  },
+  pandas: {
+    label: "Pandas",
+    iconUrl: "/src/assets/icons/logos/pandas.png",
+  },
+  numpy: {
+    label: "NumPy",
+    iconUrl: "/src/assets/icons/logos/numpy.png",
+  },
+  django: {
+    label: "Django",
+    iconUrl: "/src/assets/icons/logos/django.png",
+  },
+  celery: {
+    label: "Celery",
+    iconUrl: "/src/assets/icons/logos/celery.png",
+  },
+  dash: {
+    label: "Dash",
+    iconUrl: "/src/assets/icons/logos/dash_plotly.png",
+  },
+  js: {
+    label: "JavaScript",
+    iconUrl: "/src/assets/icons/logos/javascript.png",
+  },
+  plotlyjs: {
+    label: "Plotly.js",
+    iconUrl: "/src/assets/icons/logos/dash_plotly.png",
+  },
+  animejs: {
+    label: "anime.js",
+    iconUrl: "/src/assets/icons/logos/animejs.png",
+  },
+  sqlite: {
+    label: "SQLite",
+    iconUrl: "/src/assets/icons/logos/sqlite.png",
+  },
+  redis: {
+    label: "Redis",
+    iconUrl: "/src/assets/icons/logos/redis.png",
+  },
+  docker: {
+    label: "Docker",
+    iconUrl: "/src/assets/icons/logos/docker.png",
+  },
+  figma: {
+    label: "figma",
+    iconUrl: "/src/assets/icons/logos/figma.png",
+  },
+  php: {
+    label: "PHP",
+    iconUrl: "/src/assets/icons/logos/php.png",
+  },
+  html: {
+    label: "HTML",
+    iconUrl: "/src/assets/icons/logos/html.png",
+  },
+  css: {
+    label: "CSS",
+    iconUrl: "/src/assets/icons/logos/css.png",
+  },
+  slurm: {
+    label: "Slurm",
+    iconUrl: "/src/assets/icons/logos/slurm.png",
+  }
+}
+
+const expEntryList = [
+  {
+    location: "Tokyo, Japan",
+    date: "07/2023 - 09/2023",
+    title: "AI Developer & Researcher at Kicoetech (キコエテック) LLC.",
+    description: [
+      "End‑to‑end development of a neural network for real‑time drone‑audio denoising, from prototyping to optimized inference",
+      "Large‑scale training and refinement of CNN models on several hundred hours of audio recordings",
+      "Implementation of a training and evaluation dashboard, including live experiment tracking and integration with a local GPU cluster"
+    ],
+    techStack: ["python", "tensorflow", "pandas", "numpy", "django", "celery", "js", "plotlyjs", "redis", "docker", "sqlite", "html", "css"],
+    imageData: [
+      {
+        alt: "Tokyo Tower",
+        imgUrl: "/src/assets/images/prof_exp/kicoetech/tokyo_tower.jpg",
+        extraClass: "big-vertical-img",
+        /*tribute: "Foto von <a href=\"https://unsplash.com/de/@mattmutluu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Matt Mutlu</a> auf <a href=\"https://unsplash.com/de/fotos/die-spitze-des-eiffelturms-leuchtet-nachts-xn8ZPG6viiw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>\n" +
+          "      "*/
+      },
+      {
+        alt: "Drone",
+        imgUrl: "/src/assets/images/prof_exp/kicoetech/drone.jpg",
+        extraClass: "",
+        /*tribute: "Foto von <a href=\"https://unsplash.com/de/@kevinchow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Kevin Chow</a> auf <a href=\"https://unsplash.com/de/fotos/weisser-dji-quadcopter-der-phantom-serie-der-tagsuber-fliegt-9y0U_DEg0XI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>\n" +
+          "      "*/
+      },
+      {
+        alt: "spectrogram",
+        imgUrl: "/src/assets/images/prof_exp/kicoetech/spec.png",
+        extraClass: "",
+      }
+    ],
+    rightAlign: false
+  }
+]
+
 
 export {
   navLinks,
   abilities,
-  cloudPaths
+  wordCloudData,
+  techMap,
+  expEntryList
 };

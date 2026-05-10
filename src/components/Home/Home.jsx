@@ -173,7 +173,7 @@ export default function Home({masterTl}) {
   ]);*/
 
   return (
-    <section id="home" className="" ref={homeContainer}>
+    <section id="home" className="vh-section" ref={homeContainer}>
 
       {/*<FireParticlesFramer n_particles={20} />*/}
       <div className="home-top">

@@ -7,6 +7,7 @@ import '@fontsource/syne';
 import '@fontsource-variable/syne/wght.css';
 import '@fontsource-variable/alexandria/wght.css';
 import '@fontsource-variable/space-grotesk/wght.css';
+import '@fontsource-variable/red-hat-text/wght.css';
 import './index.css'
 import App from './App.jsx'
 

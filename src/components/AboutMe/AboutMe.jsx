@@ -57,7 +57,7 @@ export default function AboutMe({masterTl}) {
     masterTl.current.add(tl);
   }, [masterTl, spreadTextRef,  titleRef, descriptionRef]);*/
   return (
-    <section id="about-me" className="about-me-container">
+    <section id="about-me" className="vh-section about-me-container">
       <span className="spread-text" ref={spreadTextRef}>CRAFTING DIGITAL EXCELLENCE</span>
       <h1 ref={titleRef}>Software <br /> Developer</h1>
       <p className="description" ref={descriptionRef}>

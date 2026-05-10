@@ -34,7 +34,7 @@ export default function Abilities({masterTl}) {
   }, []);
 
   return (
-    <section id='abilities' className="abilities-container">
+    <section id='abilities' className="vh-section abilities-container">
       <h1 ref={titleRef}>Core Abilities</h1>
       <div className='card-container'>
         {abilities.map((ability) => (
