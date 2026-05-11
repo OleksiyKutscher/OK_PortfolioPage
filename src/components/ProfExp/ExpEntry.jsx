@@ -5,8 +5,8 @@ export default function ExpEntry(
   {location, date, title, description, techStack, imageData, rightAlign}
 ) {
   return (
-    <div className={rightAlign ? "experience-card right-align" :  "experience-card"}>
-      <div className="exp-img-container">
+    <div className="experience-card">
+      <div className={rightAlign ? "exp-img-container right-align" :  "exp-img-container"}>
         {imageData.map((data, index) => (
           <img key={index} alt={data.alt} src={data.imgUrl} className={data.extraClass ? data.extraClass : ""}/>
         ))}
@@ -16,7 +16,13 @@ export default function ExpEntry(
         <h2 className="exp-title">{title}</h2>
         <ul className="exp-description">
           {description.map((sentence, index) => (
-            <li key={index}>{sentence}</li>
+            <li key={index}>{sentence.split("##").map((subSentence, index) => {
+              if (subSentence.includes('*~')) {
+                return <span key={index}>{subSentence.replace('*~', '')}</span>;
+              } else {
+                return subSentence
+              }
+            })}</li>
           ))}
         </ul>
         <div className="exp-tech-container">

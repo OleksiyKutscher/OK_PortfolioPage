@@ -181,7 +181,7 @@ const techMap = {
   },
   php: {
     label: "PHP",
-    iconUrl: "/src/assets/icons/logos/php.png",
+    iconUrl: "/src/assets/icons/logos/php.svg?react",
   },
   html: {
     label: "HTML",
@@ -194,6 +194,10 @@ const techMap = {
   slurm: {
     label: "Slurm",
     iconUrl: "/src/assets/icons/logos/slurm.png",
+  },
+  react: {
+    label: "React",
+    iconUrl: "/src/assets/icons/logos/react.svg",
   }
 }
 
@@ -203,9 +207,9 @@ const expEntryList = [
     date: "07/2023 - 09/2023",
     title: "AI Developer & Researcher at Kicoetech (キコエテック) LLC.",
     description: [
-      "End‑to‑end development of a neural network for real‑time drone‑audio denoising, from prototyping to optimized inference",
-      "Large‑scale training and refinement of CNN models on several hundred hours of audio recordings",
-      "Implementation of a training and evaluation dashboard, including live experiment tracking and integration with a local GPU cluster"
+      "End‑to‑end development of a neural network for real‑time ##*~drone‑audio denoising##, from prototyping to optimized inference",
+      "Large‑scale ##*~training and refinement of CNN models## on several hundred hours of audio recordings",
+      "Implementation of a training and evaluation dashboard, including ##*~live experiment tracking## and integration with a local GPU cluster"
     ],
     techStack: ["python", "tensorflow", "pandas", "numpy", "django", "celery", "js", "plotlyjs", "redis", "docker", "sqlite", "html", "css"],
     imageData: [
@@ -230,6 +234,34 @@ const expEntryList = [
       }
     ],
     rightAlign: false
+  },
+   {
+    location: "Braunschweig, Germany",
+    date: "05/2021 - 03/2023",
+    title: "Web Developer at Institute of Machine Tools and Production Technology, TU Braunschweig",
+    description: [
+      "In the scope of the Sim4Pro project",
+      "##*~Front‑ and backend development## of a web‑based platform for running and analyzing simulations of sustainable battery cell systems",
+      "Optimization of existing simulation workflows to ##*~improve user experience## and significantly reduce execution time",
+      "##*~Integration of complex numerical and particle‑based simulations## with support for hundreds of input parameters and rich visual outputs (histograms, pie charts, large data tables, 3D plots)"
+    ],
+    techStack: ["python", "django", "celery", "dash", "pandas", "numpy", "js", "html", "css", "redis", "docker", "sqlite"],
+    imageData: [
+      {
+        alt: "Batteries",
+        imgUrl: "/src/assets/images/prof_exp/iwf/batteries.jpg",
+        extraClass: "big-horizontal-img",
+        /*Foto von <a href="https://unsplash.com/de/@roberto_sorin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roberto Sorin</a> auf <a href="https://unsplash.com/de/fotos/braune-grune-und-blaue-runde-knopfe-ZZ3qxWFZNRg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*/
+      },
+      {
+        alt: "battery process",
+        imgUrl: "/src/assets/images/prof_exp/iwf/battery_process.png",
+        extraClass: "big-horizontal-img",
+        /*tribute: "Foto von <a href=\"https://unsplash.com/de/@kevinchow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Kevin Chow</a> auf <a href=\"https://unsplash.com/de/fotos/weisser-dji-quadcopter-der-phantom-serie-der-tagsuber-fliegt-9y0U_DEg0XI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>\n" +
+          "      "*/
+      }
+    ],
+    rightAlign: true
   }
 ]
 

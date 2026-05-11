@@ -3,7 +3,7 @@ import { motion, useMotionValue, useSpring, useMotionTemplate } from 'framer-mot
 
 
 
-export default function FramerSpotlight() {
+export default function FramerSpotlight({techContainerRef}) {
   // 1. Motion Values für die Roh-Koordinaten
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -22,10 +22,10 @@ export default function FramerSpotlight() {
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
-
-    window.addEventListener('mousemove', handleMouseMove);
-    return () => window.removeEventListener('mousemove', handleMouseMove);
-  }, [mouseX, mouseY]);
+    const current = techContainerRef.current;
+    current.addEventListener('mousemove', handleMouseMove);
+    return () => current.removeEventListener('mousemove', handleMouseMove);
+  }, [mouseX, mouseY, techContainerRef]);
   return (
     <motion.div
       style={{
