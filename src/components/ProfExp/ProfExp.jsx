@@ -19,8 +19,10 @@ export default function ProfExp({masterTl}) {
           techStack={entry.techStack}
           imageData={entry.imageData}
           rightAlign={entry.rightAlign}
+          extraClass={entry.extraClass}
         />
       ))}
+      {/*<iframe src="https://www.kunstverein-dali.de/" />*/}
     </section>
   );
 }

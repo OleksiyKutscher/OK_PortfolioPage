@@ -12,6 +12,7 @@
   "dependencies": {
     "@fontsource-variable/alexandria": "^5.2.8",
     "@fontsource-variable/red-hat-text": "^5.2.8",
+    "@fontsource-variable/sofia-sans-condensed": "^5.2.8",
     "@fontsource-variable/space-grotesk": "^5.2.10",
     "@fontsource-variable/syne": "^5.2.7",
     "@fontsource/aladin": "^5.2.8",

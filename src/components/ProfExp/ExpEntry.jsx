@@ -2,14 +2,23 @@ import './ExpEntry.css';
 import {techMap} from "../../../constants/index.js";
 
 export default function ExpEntry(
-  {location, date, title, description, techStack, imageData, rightAlign}
+  {location, date, title, description, techStack, imageData, rightAlign, extraClass}
 ) {
   return (
-    <div className="experience-card">
+    <div className={extraClass ? "experience-card " + extraClass : "experience-card"}>
       <div className={rightAlign ? "exp-img-container right-align" :  "exp-img-container"}>
-        {imageData.map((data, index) => (
-          <img key={index} alt={data.alt} src={data.imgUrl} className={data.extraClass ? data.extraClass : ""}/>
-        ))}
+        {imageData.map((data, index) => {
+          if (data.imgUrl.includes("screen")) {
+            return (
+              <a href="https://www.kunstverein-dali.de/" key={index} target="_blank" rel="noopener noreferrer"
+                 className={data.extraClass ? data.extraClass + " dali-ref" : "dali-ref"}>
+                <img key={index} alt={data.alt} src={data.imgUrl} />
+              </a>
+            )
+          } else {
+            return <img key={index} alt={data.alt} src={data.imgUrl} className={data.extraClass ? data.extraClass : ""}/>
+          }
+        })}
       </div>
       <div className="exp-text-container">
         <div className="exp-header">{location + " • " + date}</div>

@@ -1,8 +1,5 @@
 import './Header.css';
-import DownloadIcon from '../assets/icons/download.png';
-import EmailIcon from '../assets/icons/email.png';
-import LinkedInIcon from '../assets/icons/logos/linkedin.png';
-import {navLinks} from '../../constants/index.js'
+import {navLinks, headerButtonData} from '../../constants/index.js'
 
 export default function Header() {
   return (
@@ -17,21 +14,13 @@ export default function Header() {
         ))}
       </ul>
       <div className="header-buttons">
-        <a href="/CV_Kutscher.pdf" download={true}>
-          <button className="header-button" >
-            <div className="header-icon" style={{ '--icon-url': `url(${DownloadIcon})`}} />
-          </button>
-        </a>
-        <a href="mailto:olekisy.kutscher@gmail.com" target={"_blank"}>
-          <button className="header-button">
-            <div className="header-icon" style={{ '--icon-url': `url(${EmailIcon})`}} />
-          </button>
-        </a>
-        <a href="https://linkedin.com/in/oleksiy-kutscher-4303913a4" target="_blank" rel="noreferrer">
-          <button className="header-button">
-            <div className="header-icon" style={{ '--icon-url': `url(${LinkedInIcon})`}} />
-          </button>
-        </a>
+        {headerButtonData.map((data, index) => (
+          <a key={index} href={data.iconUrl.includes('mail') ? `mailto:${data.userName}@${data.domainName}` : data.href} target={"_blank"} rel="noreferrer">
+            <button className="header-button">
+              <div className="header-icon" style={{ '--icon-url': `url(${data.iconUrl})`}} />
+            </button>
+          </a>
+        ))}
       </div>
     </div>
   );

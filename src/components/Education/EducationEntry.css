@@ -1,0 +1,46 @@
+.education-entry {
+    display: grid;
+    grid-template-columns: 20% 80%;
+    padding-top: 1vw;
+    padding-bottom: 1vw;
+    margin-left: 3px;
+}
+
+.edu-date-container {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+    align-items: flex-start;
+    gap: 2vw;
+}
+
+
+.edu-point {
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    background-color: var(--primary-color-0);
+}
+
+.edu-date {
+    font-family: var(--main-font);
+    font-weight: bold;
+    color: var(--primary-color-0);
+}
+
+.edu-text-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.edu-study-field {
+    color: var(--neutral-color-2);
+}
+
+.edu-location {
+    color: var(--neutral-color-3);
+}
+
+.edu-extra {
+    color: var(--neutral-color-3);
+}

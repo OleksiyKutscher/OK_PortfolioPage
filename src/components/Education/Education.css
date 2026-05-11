@@ -1,0 +1,37 @@
+.education-container {
+    font-family: var(--manrope-font);
+    font-weight: bold;
+    justify-content: center;
+    align-items: center;
+    gap: 4vw;
+    margin-bottom: 8vh;
+}
+
+.education-entries {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    gap: 1vw;
+    width: 100%;
+    max-width: 80vw;
+    background-color: var(--neutral-color-0);
+    border-radius: 30px;
+    padding: 20px;
+}
+
+@media (max-width: 1354px) {
+    .education-entries {
+        max-width: 100%;
+    }
+}
+
+
+.edu-line {
+    position: absolute;
+    left: 30px;
+    top: 1vw;
+    bottom: 1vw;
+    width: 7px;
+    background-color: var(--neutral-color-2);
+    border-radius: 3px;
+}

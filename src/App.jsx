@@ -12,6 +12,8 @@ import {SplitText, ScrollTrigger, ScrollSmoother} from "gsap/all";
 import CodeImg from "./assets/images/code.png";
 import TechStack from "./components/TechStack/TechStack.jsx";
 import ProfExp from "./components/ProfExp/ProfExp.jsx";
+import Education from "./components/Education/Education.jsx";
+import Footer from "./components/Footer.jsx";
 
 gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
 
@@ -74,11 +76,13 @@ function App() {
             <Abilities masterTl={masterTl} />
             <TechStack maasterTl={masterTl} />
             <ProfExp masterTl={masterTl} />
+            <Education masterTl={masterTl} />
+            <Footer masterTl={masterTl} />
             {/*<div className="technical-grid">
 
               <div style={{ marginTop: '100vh', width:'100px', height:'100px', backgroundColor: "red" }}></div>
             </div>*/}
-            <div style={{ marginTop: '1000vh', width:'100px', height:'100px', backgroundColor: "red" }}></div>
+            {/*<div style={{ marginTop: '1000vh', width:'100px', height:'100px', backgroundColor: "red" }}></div>*/}
           </main>
         </div>
       </div>

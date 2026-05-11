@@ -21,6 +21,23 @@ const navLinks = [
   },
 ]
 
+const headerButtonData = [
+  {
+    /*href: 'mailto:olekisy.kutscher@gmail.com',*/
+    userName: 'olekisy.kutscher',
+    domainName: 'gmail.com',
+    iconUrl: 'src/assets/icons/email.png'
+  },
+  {
+    href: 'https://linkedin.com/in/oleksiy-kutscher-4303913a4',
+    iconUrl: 'src/assets/icons/logos/linkedin.png'
+  },
+  {
+    href: 'https://github.com/OleksiyKutscher',
+    iconUrl: 'src/assets/icons/logos/github.png'
+  },
+]
+
 const abilities = [
   {
     id: 'ai',
@@ -176,7 +193,7 @@ const techMap = {
     iconUrl: "/src/assets/icons/logos/docker.png",
   },
   figma: {
-    label: "figma",
+    label: "Figma",
     iconUrl: "/src/assets/icons/logos/figma.png",
   },
   php: {
@@ -233,9 +250,10 @@ const expEntryList = [
         extraClass: "",
       }
     ],
-    rightAlign: false
+    rightAlign: false,
+    extraClass: "",
   },
-   {
+  {
     location: "Braunschweig, Germany",
     date: "05/2021 - 03/2023",
     title: "Web Developer at Institute of Machine Tools and Production Technology, TU Braunschweig",
@@ -261,15 +279,73 @@ const expEntryList = [
           "      "*/
       }
     ],
-    rightAlign: true
+    rightAlign: true,
+    extraClass: "",
+  },
+  {
+    location: "Braunschweig, Germany",
+    date: "05/2022 - 08/2022",
+    title: "Voluntary Web Developer for Art Club DALI e.V.",
+    description: [
+      "End‑to‑end development of the website, from ##*~design to deployment##",
+      "Custom admin panel with secure login and full ##*~content management## capabilities",
+      "Ensured a ##*~clean, scalable codebase## to support future features and long‑term maintainability"
+    ],
+    techStack: ["python", "django", "js", "animejs", "html", "css", "sqlite", "php", "figma"],
+    imageData: [
+      {
+        alt: "Dance",
+        imgUrl: "/src/assets/images/prof_exp/dali/dance.png",
+        extraClass: "",
+      },
+      {
+        alt: "Boat",
+        imgUrl: "/src/assets/images/prof_exp/dali/boat.png",
+        extraClass: "",
+      },
+      {
+        alt: "DALI e.V. Web page",
+        imgUrl: "/src/assets/images/prof_exp/dali/dali_screen2.png",
+        extraClass: "big-horizontal-img",
+      }
+    ],
+    rightAlign: false,
+    extraClass: "adjust-height",
   }
 ]
 
-
+const educationEntryList = [
+  {
+    date: "10/2022 - 03/2026",
+    studyField: "Master of Science in Computer Science",
+    location: "TU Braunschweig, Germany",
+    extra: "Master's Thesis: Embedding Space Optimization for  Language-based Audio Retrieval"
+  },
+  {
+    date: "10/2023 - 10/2024",
+    studyField: "Study Abroad – Master of Science in Computer Science",
+    location: "Shizuoka University, Hamamatsu, Japan",
+    extra: ""
+  },
+  {
+    date: "10/2018 - 11/2022",
+    studyField: "Bachelor of Science in Computer Science",
+    location: "TU Braunschweig, Germany",
+    extra: "Bachelor's Thesis: Exploration and analysis of in-home  sensor data using machine learning by example of the  BASIS project"
+  },
+   {
+    date: "2010 - 2018",
+    studyField: "General Qualification for University Entrance (Abitur)",
+    location: "Gymnasium Hoffman-von-Fallersleben-Schule, Braunschweig, Germany",
+    extra: ""
+  },
+]
 export {
   navLinks,
+  headerButtonData,
   abilities,
   wordCloudData,
   techMap,
-  expEntryList
+  expEntryList,
+  educationEntryList
 };

@@ -55,12 +55,12 @@
     box-shadow: 0 0 8px rgba(0, 219, 233, 0.5);
     cursor: pointer;
     padding: 1px 10px;
-    transition: all 0.2s ease-in-out;
+    transition: transform 0.2s ease-in-out;
 
 
     &:hover {
         background-color: var(--primary-color-0);
-        transition: all 0.1s ease-in;
+        transition: transform 0.1s ease-in;
         transform: translateY(-2px);
         box-shadow: 0 4px 12px rgba(0, 219, 233, 1.0);
     }
@@ -86,7 +86,6 @@
 
         &:hover {
             background-color: var(--neutral-color-5);
-            transition: all 0.1s ease-in;
         }
     }
 }

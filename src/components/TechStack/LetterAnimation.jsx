@@ -7,7 +7,7 @@ export default function LetterAnimation({ text, x, y, fontSize }) {
     hover: {
 
       transition: {
-        staggerChildren: 0.07, // Hier passiert die Magie
+        staggerChildren: 0.1, // Hier passiert die Magie
       },
     },
   };
@@ -16,15 +16,18 @@ export default function LetterAnimation({ text, x, y, fontSize }) {
   const letterVariants = {
     initial: {
       fill: "#929093",
+      y: 0,
+      opacity: 1,
       /*baselineShift: "0%"*/
 
     },
     hover: {
-      fill: "#22D3EE",
-
+      fill: ["#929093", "#22D3EE", "#929093"],
+      y: [-10, 0],
+      opacity: [1, 0.5, 1],
       /*baselineShift: ["-20%", "0%"], // Kleiner Hüpfer nach oben*/
 
-      transition: { type: "tween", ease: ["easeIn", "easeOut"] }
+      transition: { type: "spring", stiffness: 300, damping: 100}
     },
 
   };
