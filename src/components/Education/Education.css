@@ -19,7 +19,7 @@
     padding: 20px;
 }
 
-@media (max-width: 1354px) {
+@media screen and (max-width: 1354px) {
     .education-entries {
         max-width: 100%;
     }
@@ -34,4 +34,10 @@
     width: 7px;
     background-color: var(--neutral-color-2);
     border-radius: 3px;
+}
+
+@media screen and (max-width: 1024px) {
+    .edu-line {
+        left: 26px;
+    }
 }

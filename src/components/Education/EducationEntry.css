@@ -44,3 +44,25 @@
 .edu-extra {
     color: var(--neutral-color-3);
 }
+
+@media screen and (max-width: 1024px) {
+    .education-entry {
+        grid-template-columns: 30% 70%;
+        padding-top: 0;
+        margin-left: 0;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .education-entry {
+        grid-template-columns: 1fr;
+    }
+
+    .edu-date-container {
+        gap: 20px
+    }
+
+    .edu-text-container {
+        margin-left: 40px;
+    }
+}

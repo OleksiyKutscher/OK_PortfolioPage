@@ -89,25 +89,42 @@
     font-weight: normal;
 }
 
-.tech-element {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 0.3rem;
-    border: 1px solid var(--neutral-color-2);
-    border-radius: 10px;
-    padding: 5px;
-    font-size: 1em;
-
-
-    & img {
-        width: 25px;
-        height: 25px;
-        object-fit: contain;
-    }
-}
-
 .dali-ref {
     cursor: pointer;
 
+}
+
+
+@media screen and (max-width: 1024px) {
+    .experience-card {
+        grid-template-columns: 1fr;
+        max-height: 90vh;
+    }
+
+    .adjust-height {
+        height: auto;
+        width: 100%;
+    }
+
+    .right-align {
+        order: 0;
+    }
+
+    .exp-header {
+        font-size: 18px;
+    }
+
+    .exp-title {
+        font-size: 26px;
+        line-height: 27px;
+    }
+
+    .exp-description {
+        font-size: 16px;
+        margin-bottom: 2vw;
+    }
+
+    .dali-ref {
+        height: 30vh;
+    }
 }

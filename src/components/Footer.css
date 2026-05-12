@@ -1,6 +1,57 @@
 .footer {
     position: relative;
-    height: 15vh;
     background-color: var(--neutral-color-0);
     z-index: 200;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 10px;
+}
+
+.policy-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    font-family: var(--manrope-font);
+    font-weight: bold;
+    color: var(--neutral-color-2);
+}
+
+.policy-text {
+    cursor: pointer;
+    &:hover {
+        color: var(--primary-color-0);
+    }
+}
+
+.tech-stack {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    font-family: var(--manrope-font);
+    font-weight: bold;
+    color: var(--neutral-color-2);
+    gap: 10px;
+}
+
+
+.tech-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-family: var(--sofia-condensed-font);
+    font-weight: normal;
+}
+
+.tech-stack .tech-element {
+    font-size: 1em;
+
+    & img {
+        width: 15px;
+        height: 15px;
+    }
 }

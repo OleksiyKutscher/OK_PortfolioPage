@@ -1,5 +1,5 @@
 import './ExpEntry.css';
-import {techMap} from "../../../constants/index.js";
+import TechElement from "../TechElement.jsx";
 
 export default function ExpEntry(
   {location, date, title, description, techStack, imageData, rightAlign, extraClass}
@@ -36,10 +36,7 @@ export default function ExpEntry(
         </ul>
         <div className="exp-tech-container">
           {techStack.map((name, index) => (
-            <div key={index} className="tech-element">
-              <img src={techMap[name].iconUrl} alt={techMap[name].label + " icon"} />
-              <span className="tech-label">{techMap[name].label}</span>
-            </div>
+            <TechElement key={index} name={name} />
           ))}
         </div>
       </div>

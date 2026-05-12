@@ -1,9 +1,9 @@
 .content-container {
     display: block;
     width: 100%;
-    /*padding-top: var(--header-height);*/
+    /*padding-top: var(--header-height);85.56deg*/
     position: relative;
-    background: linear-gradient(85.56deg, var(--tertiary-color-0) -56.12%, var(--neutral-color-0) 37.12%);
+    background: linear-gradient(90deg, var(--tertiary-color-0) -56.12%, var(--neutral-color-0) 37.12%);
 
 }
 
@@ -57,4 +57,17 @@
     pointer-events: none;
     cursor: none;
     z-index: 10;
+}
+
+
+@media screen and (max-width: 1024px) {
+    .code-img-container {
+        background-size: 150% !important;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .code-img-container {
+        background-size: 200% !important;
+    }
 }

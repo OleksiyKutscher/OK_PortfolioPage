@@ -1,0 +1,46 @@
+dialog {
+  overscroll-behavior: contain;
+}
+
+/* Das native Backdrop stylen */
+dialog::backdrop {
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(4px);
+}
+
+.modal-box {
+  padding: 0;
+  width: 90%;
+  background-color: var(--neutral-color-0);
+  border: none;
+  border-radius: 30px;
+  color: var(--neutral-color-2);
+  font-family: var(--manrope-font);
+  font-size: 1em;
+}
+
+.modal-content {
+  padding: 20px;
+  overflow-y: auto; /* Aktiviert das Scrollen NUR hier */
+  -webkit-overflow-scrolling: touch; /* Flüssiges Scrollen auf iPhones */
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 15px;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--neutral-color-2);
+}
+
+body:has(dialog[open]) {
+  overflow: hidden;
+}

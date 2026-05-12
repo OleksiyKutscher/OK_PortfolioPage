@@ -215,6 +215,18 @@ const techMap = {
   react: {
     label: "React",
     iconUrl: "/src/assets/icons/logos/react.svg",
+  },
+  gsap: {
+    label: "GSAP",
+    iconUrl: "/src/assets/icons/logos/gsap.svg?react",
+  },
+  lenis: {
+    label: "Lenis Scroll",
+    iconUrl: "/src/assets/icons/logos/lenis.png",
+  },
+  motion: {
+    label: "Motion",
+    iconUrl: "/src/assets/icons/logos/motion.png",
   }
 }
 
@@ -340,6 +352,11 @@ const educationEntryList = [
     extra: ""
   },
 ]
+
+const websiteTechStack = [
+  "react", "figma", "gsap", "lenis", "motion", "css"
+]
+
 export {
   navLinks,
   headerButtonData,
@@ -347,5 +364,6 @@ export {
   wordCloudData,
   techMap,
   expEntryList,
-  educationEntryList
+  educationEntryList,
+  websiteTechStack
 };

@@ -1,0 +1,17 @@
+.tech-element {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 0.3rem;
+    border: 1px solid var(--neutral-color-2);
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 1.2em;
+    color: var(--neutral-color-2);
+
+    & img {
+        width: 25px;
+        height: 25px;
+        object-fit: contain;
+    }
+}
