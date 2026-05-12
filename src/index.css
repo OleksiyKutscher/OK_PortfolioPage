@@ -46,6 +46,7 @@ html, body {
   flex-direction: column;
   width: 100%;
   height: auto;
+  overflow-x: hidden;
   /*width: 100vw;
   height: 100vh;*/
   /*background-color: var(--neutral-color-0);*/
@@ -86,6 +87,7 @@ h1 {
   font-weight: bold;
   font-size: 72px;
   color: var(--neutral-color-2);
+  text-align: center;
 }
 
 h2 {
@@ -129,29 +131,33 @@ section {
   z-index: 200;
 }
 
-.vh-section {
-  height: 100vh;
-}
 
-/*section::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
+  /*section::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
 
 
-  background-image: inherit;
-  background-repeat: repeat;
-  background-size: 200px;
-  background-attachment: fixed;
+    background-image: inherit;
+    background-repeat: repeat;
+    background-size: 200px;
+    background-attachment: fixed;
 
-  -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.3) 70%);
-  mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.3) 70%);
+    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.3) 70%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 20%, rgba(0, 0, 0, 0.3) 70%);
 
-  pointer-events: none;
-}*/
+    pointer-events: none;
+  }*/
 p {
   margin: 0;
+}
+
+
+@media screen and (max-width: 767px) {
+  h1 {
+    font-size: 48px;
+  }
 }

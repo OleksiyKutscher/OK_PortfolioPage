@@ -9,7 +9,7 @@ import {abilities} from "../../../constants/index.js";
 export default function Abilities({masterTl}) {
   const titleRef = useRef(null);
 
-  useGSAP(() => {
+  /*useGSAP(() => {
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#abilities',
@@ -20,18 +20,8 @@ export default function Abilities({masterTl}) {
         markers: true // 👈 Aktiviere Marker zum Debuggen!
       }
     });
-    /*tl.to(, {
-      x: 0,
-      y: "-10vw",
-      scale: 1,
-      //rotation: 720,
-      ease: 'expo.out',
-      delay: 0.0,
-      //duration: 0.3,
-      //stagger: -0.07,
-    },0)*/
     masterTl.current.add(tl);
-  }, []);
+  }, []);*/
 
   return (
     <section id='abilities' className="vh-section abilities-container">

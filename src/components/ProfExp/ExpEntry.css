@@ -97,7 +97,7 @@
     border: 1px solid var(--neutral-color-2);
     border-radius: 10px;
     padding: 5px;
-    font-size: 1.2vw;
+    font-size: 1em;
 
 
     & img {

@@ -1,16 +1,16 @@
 const navLinks = [
   {
-    id: 'about-me',
-    title: 'About Me',
+    id: 'abilities',
+    title: 'Core Abilities',
   },
   {
     id: 'tech',
     title: 'Tech Stack',
   },
-  {
+  /*{
     id: 'showcase',
     title: 'Showcase',
-  },
+  },*/
   {
     id: 'prof-exp',
     title: 'Professional Experience',

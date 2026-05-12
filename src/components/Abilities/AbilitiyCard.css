@@ -37,3 +37,49 @@
         margin-top: 2vw;*/
     }
 }
+
+@media screen and (max-width: 767px) {
+    .card {
+        width: 200px;
+        height: 200px;
+        padding: 18px;
+        gap: 8px;
+
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        & h2 {
+            font-size: 20px;
+        }
+
+        & p {
+            font-size: 11px;
+            margin-top: 0;
+        }
+    }
+}
+
+/*@media screen and (max-width: 540px) {
+    .card {
+        width: 80%;
+        height: 40vw;
+        padding: 18px;
+        gap: 8px;
+
+        .icon {
+            width: 20px;
+            height: 20px;
+        }
+
+        & h2 {
+            font-size: 20px;
+        }
+
+        & p {
+            font-size: 11px;
+            margin-top: 0;
+        }
+    }
+}*/

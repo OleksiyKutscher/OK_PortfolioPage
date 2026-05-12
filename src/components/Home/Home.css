@@ -1,13 +1,7 @@
 
 
-.home-section {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    box-sizing: border-box;
-    width: 100%;
-    flex-shrink: 0;
-    position: relative;
+.home-container {
+    height: 100vh;
 }
 
 
@@ -155,12 +149,12 @@
 
 .scroll-indicator {
     position: absolute;
-    bottom: 2vw;
+    bottom: 2vh;
     margin-left: 45%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 1vh;
     z-index: 20;
 }
 
@@ -205,3 +199,59 @@
     animation: line-draw 2.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
+@media screen and (max-height: 780px) {
+    /*.scroll-indicator {
+        margin-left: 0;
+        right: 5%
+    }*/
+
+    .scroll-line, .scroll-ping {
+        height: 24px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .home-top {
+        flex-direction: column-reverse;
+        margin-left: 0;
+        align-items: center;
+        gap: 3vh;
+    }
+
+    .home-top-text {
+        align-items: center;
+    }
+
+    .home-title {
+        font-size: 4rem;
+        line-height: 4rem;
+        text-align: center;
+
+        & > br {
+            display: none;
+        }
+    }
+
+
+    .home-top-portrait {
+        width: 60vw;
+    }
+
+    .home-sub {
+        font-size: 7vw;
+    }
+
+    .scroll-indicator {
+        gap: 4px;
+        margin-left: 40%;
+        right: initial;
+    }
+
+    .scroll-text {
+        font-size: 10px;
+    }
+
+    .scroll-line, .scroll-ping {
+        height: 24px;
+    }
+}
