@@ -3,6 +3,9 @@ import Modal from "./Modal";
 import {websiteTechStack} from "../../constants/index.js";
 import TechElement from "./TechElement.jsx";
 import {useState} from "react";
+import AdressImg from "../assets/images/imprint/address.png";
+import EmailImg from "../assets/images/imprint/email.png";
+import TelImg from "../assets/images/imprint/tel.png";
 
 export default function Footer({masterTl}) {
   const [isImpressumModalOpen, setImpressumModalOpen] = useState(false);
@@ -30,13 +33,15 @@ export default function Footer({masterTl}) {
           <h3>Angaben gemäß § 5 DDG</h3>
           <h4>Name und Anschrift:</h4>
           <p>Oleksiy Kutscher</p>
-          <img src={null} alt="adresse"/> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
+          <div className="imprint-img-container"><img src={AdressImg} alt="adresse"/></div> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
           <p>Kontakt:</p>
-          <p>Telefon: [Deine Telefonnummer]</p>
-          <p>E-Mail: [Deine E-Mail-Adresse]</p>
+          <p>Telefon: </p>
+            <div className="imprint-img-container"><img src={TelImg} alt="tel"/></div>
+            <p>E-Mail: </p>
+            <div className="imprint-img-container"><img src={EmailImg} alt="email"/></div>
           <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h3>
           <p>Oleksiy Kutscher</p>
-          <img src={null} alt="adresse"/> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
+            <div className="imprint-img-container"><img src={AdressImg} alt="adresse"/></div> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
         </div>
         <div >
           <h2>Nutzungsbedingungen & Haftungsausschluss</h2>
@@ -71,8 +76,16 @@ export default function Footer({masterTl}) {
       >
         <h3>1. Verantwortlicher</h3>
         <p>
-          Verantwortlich für die Datenverarbeitung auf dieser Website ist:Oleksiy Kutscher[Deine Adresse / oder c/o Anschrift]E-Mail: [Deine E-Mail-Adresse]
+          Verantwortlich für die Datenverarbeitung auf dieser Website ist:
         </p>
+        <p>
+          Oleksiy Kutscher
+        </p>
+        <div className="imprint-img-container"><img src={AdressImg} alt="adresse"/></div>
+        <p>
+          E-Mail:
+        </p>
+        <div className="imprint-img-container"><img src={EmailImg} alt="email"/></div>
         <h3>2. Datenerfassung beim Besuch dieser Website (Server-Logfiles)</h3>
         <p>
           Bei jedem Aufruf dieser Webseite erfasst der Provider der Seiten automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch an uns übermittelt. Dies sind:Browsertyp und BrowserversionVerwendetes BetriebssystemReferrer URL (die zuvor besuchte Seite)Hostname des zugreifenden RechnersUhrzeit der ServeranfrageIP-AdresseDiese Daten sind technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Rechtsgrundlage für diese Verarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am Betrieb der Website).
