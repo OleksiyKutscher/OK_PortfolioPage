@@ -38,7 +38,7 @@ import MotionIcon from '../src/assets/icons/logos/motion.png';
 
 // Prof Exp
 import TokyoTowerImg from '../src/assets/images/prof_exp/kicoetech/tokyo_tower.jpg';
-import DroneImg from '../src/assets/images/prof_exp/kicoetech/drone.jpg.jpg';
+import DroneImg from '../src/assets/images/prof_exp/kicoetech/drone.jpg';
 import SpecImg from '../src/assets/images/prof_exp/kicoetech/spec.png';
 
 import BatteryImg from '../src/assets/images/prof_exp/iwf/batteries.jpg';
