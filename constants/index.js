@@ -1,3 +1,19 @@
+
+// Header
+import EmailIcon from '../src/assets/icons/email.png';
+import LinkedInIcon from '../src/assets/icons/logos/linkedin.png';
+import GitHubIcon from '../src/assets/icons/logos/github.png';
+
+// Abilities
+import AiIcon from '../src/assets/icons/abilities/ai.png';
+import WebIcon from '../src/assets/icons/abilities/web.png';
+import ArchIcon from '../src/assets/icons/abilities/arch.png';
+import CreativeIcon from '../src/assets/icons/abilities/creative.png';
+import DataIcon from '../src/assets/icons/abilities/data.png';
+import FutureIcon from '../src/assets/icons/abilities/future.png';
+
+
+
 const navLinks = [
   {
     id: 'abilities',
@@ -26,52 +42,52 @@ const headerButtonData = [
     /*href: 'mailto:olekisy.kutscher@gmail.com',*/
     userName: 'olekisy.kutscher',
     domainName: 'gmail.com',
-    iconUrl: 'src/assets/icons/email.png'
+    iconUrl: EmailIcon
   },
   {
     href: 'https://linkedin.com/in/oleksiy-kutscher-4303913a4',
-    iconUrl: 'src/assets/icons/logos/linkedin.png'
+    iconUrl: LinkedInIcon
   },
   {
     href: 'https://github.com/OleksiyKutscher',
-    iconUrl: 'src/assets/icons/logos/github.png'
+    iconUrl: GitHubIcon
   },
 ]
 
 const abilities = [
   {
     id: 'ai',
-    iconUrl: '/src/assets/icons/abilities/ai.png',
+    iconUrl: AiIcon,
     title: 'AI & Machine Learning',
     description: 'End-to-end development of any architecture and modality.',
   },
   {
     id: 'web',
-    iconUrl: '/src/assets/icons/abilities/web.png',
+    iconUrl: WebIcon,
     title: 'Web Development',
     description: 'Building scalable, high-performance web applications with modern frameworks and responsive design.',
   },
   {
     id: 'software',
-    iconUrl: '/src/assets/icons/abilities/arch.png',
+    iconUrl: ArchIcon,
     title: 'Software Architecture',
     description: 'Designing robust, modular, and maintainable systems tailored for long-term growth and stability.',
   },
   {
     id: 'creative',
-    iconUrl: '/src/assets/icons/abilities/creative.png',
+    iconUrl: CreativeIcon,
     title: 'Creative Design',
     description: 'Bridging the gap between technical logic and user-centric aesthetics',
   },
   {
     id: 'data',
-    iconUrl: '/src/assets/icons/abilities/data.png',
+    iconUrl: DataIcon,
     title: 'Data Solutions',
     description: 'Transforming raw data into actionable insights through efficient pipelines and advanced visualization.',
   },
   {
     id: 'future',
-    iconUrl: '/src/assets/icons/abilities/future.png',
+    iconUrl: FutureIcon,
     title: 'Future Technology',
     description: 'Bridging the gap between experimental research and practical, high-impact business applications.',
   },
