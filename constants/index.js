@@ -12,7 +12,41 @@ import CreativeIcon from '../src/assets/icons/abilities/creative.png';
 import DataIcon from '../src/assets/icons/abilities/data.png';
 import FutureIcon from '../src/assets/icons/abilities/future.png';
 
+// Tech Icons
+import PythonIcon from '../src/assets/icons/python.png';
+import PyTorchIcon from '../src/assets/icons/pytorch.png';
+import TensorFlowIcon from '../src/assets/icons/tensorflow.png';
+import PandasIcon from '../src/assets/icons/pandas.png';
+import NumPyIcon from '../src/assets/icons/numpy.png';
+import DjangoIcon from '../src/assets/icons/django.png';
+import CeleryIcon from '../src/assets/icons/celery.png';
+import DashPlotlyIcon from '../src/assets/icons/dash_plotly.png';
+import JsIcon from '../src/assets/icons/javascript.png';
+import AnimeJsIcon from '../src/assets/icons/animejs.png';
+import SQLiteIcon from '../src/assets/icons/sqlite.png';
+import RedisIcon from '../src/assets/icons/redis.png';
+import DockerIcon from '../src/assets/icons/docker.png';
+import FigmaIcon from '../src/assets/icons/figma.png';
+import PhpIcon from '../src/assets/icons/php.svg?react';
+import HtmlIcon from '../src/assets/icons/html.png';
+import CssIcon from '../src/assets/icons/css.png';
+import SlurmIcon from '../src/assets/icons/slurm.png';
+import ReactIcon from '../src/assets/icons/react.svg?react';
+import GsapIcon from '../src/assets/icons/gsap.svg?react';
+import LenisIcon from '../src/assets/icons/lenis.png';
+import MotionIcon from '../src/assets/icons/motion.png';
 
+// Prof Exp
+import TokyoTowerImg from '../src/assets/images/prof_exp/kicoetech/tokyo_tower.jpg';
+import DroneImg from '../src/assets/images/prof_exp/kicoetech/drone.jpg.jpg';
+import SpecImg from '../src/assets/images/prof_exp/kicoetech/spec.png';
+
+import BatteryImg from '../src/assets/images/prof_exp/iwf/batteries.jpg';
+import BatteryProcessImg from '../src/assets/images/prof_exp/iwf/battery_process.png';
+
+import DanceImg from  '../src/assets/images/prof_exp/dali/dance.png';
+import BoatImg from '../src/assets/images/prof_exp/dali/boat.png';
+import DaliPageImg from '../src/assets/images/prof_exp/dali/dali_screen2.png';
 
 const navLinks = [
   {
@@ -154,95 +188,95 @@ const wordCloudData = [
 const techMap = {
   python: {
     label: "Python",
-    iconUrl: "/src/assets/icons/logos/python.png",
+    iconUrl: PythonIcon,
   },
   pytorch: {
     label: "PyTorch",
-    iconUrl: "/src/assets/icons/logos/pytorch.png",
+    iconUrl: PyTorchIcon,
   },
   tensorflow: {
     label: "Tensorflow",
-    iconUrl: "/src/assets/icons/logos/tensorflow.png",
+    iconUrl: TensorFlowIcon,
   },
   pandas: {
     label: "Pandas",
-    iconUrl: "/src/assets/icons/logos/pandas.png",
+    iconUrl: PandasIcon,
   },
   numpy: {
     label: "NumPy",
-    iconUrl: "/src/assets/icons/logos/numpy.png",
+    iconUrl: NumPyIcon,
   },
   django: {
     label: "Django",
-    iconUrl: "/src/assets/icons/logos/django.png",
+    iconUrl: DjangoIcon,
   },
   celery: {
     label: "Celery",
-    iconUrl: "/src/assets/icons/logos/celery.png",
+    iconUrl: CeleryIcon,
   },
   dash: {
     label: "Dash",
-    iconUrl: "/src/assets/icons/logos/dash_plotly.png",
+    iconUrl: DashPlotlyIcon,
   },
   js: {
     label: "JavaScript",
-    iconUrl: "/src/assets/icons/logos/javascript.png",
+    iconUrl: JsIcon,
   },
   plotlyjs: {
     label: "Plotly.js",
-    iconUrl: "/src/assets/icons/logos/dash_plotly.png",
+    iconUrl: DashPlotlyIcon,
   },
   animejs: {
     label: "anime.js",
-    iconUrl: "/src/assets/icons/logos/animejs.png",
+    iconUrl: AnimeJsIcon,
   },
   sqlite: {
     label: "SQLite",
-    iconUrl: "/src/assets/icons/logos/sqlite.png",
+    iconUrl: SQLiteIcon,
   },
   redis: {
     label: "Redis",
-    iconUrl: "/src/assets/icons/logos/redis.png",
+    iconUrl: RedisIcon,
   },
   docker: {
     label: "Docker",
-    iconUrl: "/src/assets/icons/logos/docker.png",
+    iconUrl: DockerIcon,
   },
   figma: {
     label: "Figma",
-    iconUrl: "/src/assets/icons/logos/figma.png",
+    iconUrl: FigmaIcon,
   },
   php: {
     label: "PHP",
-    iconUrl: "/src/assets/icons/logos/php.svg?react",
+    iconUrl: PhpIcon,
   },
   html: {
     label: "HTML",
-    iconUrl: "/src/assets/icons/logos/html.png",
+    iconUrl: HtmlIcon,
   },
   css: {
     label: "CSS",
-    iconUrl: "/src/assets/icons/logos/css.png",
+    iconUrl: CssIcon,
   },
   slurm: {
     label: "Slurm",
-    iconUrl: "/src/assets/icons/logos/slurm.png",
+    iconUrl: SlurmIcon,
   },
   react: {
     label: "React",
-    iconUrl: "/src/assets/icons/logos/react.svg",
+    iconUrl: ReactIcon,
   },
   gsap: {
     label: "GSAP",
-    iconUrl: "/src/assets/icons/logos/gsap.svg?react",
+    iconUrl: GsapIcon,
   },
   lenis: {
     label: "Lenis Scroll",
-    iconUrl: "/src/assets/icons/logos/lenis.png",
+    iconUrl: LenisIcon,
   },
   motion: {
     label: "Motion",
-    iconUrl: "/src/assets/icons/logos/motion.png",
+    iconUrl: MotionIcon,
   }
 }
 
@@ -260,21 +294,21 @@ const expEntryList = [
     imageData: [
       {
         alt: "Tokyo Tower",
-        imgUrl: "/src/assets/images/prof_exp/kicoetech/tokyo_tower.jpg",
+        imgUrl: TokyoTowerImg,
         extraClass: "big-vertical-img",
         /*tribute: "Foto von <a href=\"https://unsplash.com/de/@mattmutluu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Matt Mutlu</a> auf <a href=\"https://unsplash.com/de/fotos/die-spitze-des-eiffelturms-leuchtet-nachts-xn8ZPG6viiw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>\n" +
           "      "*/
       },
       {
         alt: "Drone",
-        imgUrl: "/src/assets/images/prof_exp/kicoetech/drone.jpg",
+        imgUrl: DroneImg,
         extraClass: "",
         /*tribute: "Foto von <a href=\"https://unsplash.com/de/@kevinchow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Kevin Chow</a> auf <a href=\"https://unsplash.com/de/fotos/weisser-dji-quadcopter-der-phantom-serie-der-tagsuber-fliegt-9y0U_DEg0XI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>\n" +
           "      "*/
       },
       {
         alt: "spectrogram",
-        imgUrl: "/src/assets/images/prof_exp/kicoetech/spec.png",
+        imgUrl: SpecImg,
         extraClass: "",
       }
     ],
@@ -295,13 +329,13 @@ const expEntryList = [
     imageData: [
       {
         alt: "Batteries",
-        imgUrl: "/src/assets/images/prof_exp/iwf/batteries.jpg",
+        imgUrl: BatteryImg,
         extraClass: "big-horizontal-img",
         /*Foto von <a href="https://unsplash.com/de/@roberto_sorin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roberto Sorin</a> auf <a href="https://unsplash.com/de/fotos/braune-grune-und-blaue-runde-knopfe-ZZ3qxWFZNRg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>*/
       },
       {
         alt: "battery process",
-        imgUrl: "/src/assets/images/prof_exp/iwf/battery_process.png",
+        imgUrl: BatteryProcessImg,
         extraClass: "big-horizontal-img",
         /*tribute: "Foto von <a href=\"https://unsplash.com/de/@kevinchow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Kevin Chow</a> auf <a href=\"https://unsplash.com/de/fotos/weisser-dji-quadcopter-der-phantom-serie-der-tagsuber-fliegt-9y0U_DEg0XI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>\n" +
           "      "*/
@@ -323,17 +357,17 @@ const expEntryList = [
     imageData: [
       {
         alt: "Dance",
-        imgUrl: "/src/assets/images/prof_exp/dali/dance.png",
+        imgUrl: DanceImg,
         extraClass: "",
       },
       {
         alt: "Boat",
-        imgUrl: "/src/assets/images/prof_exp/dali/boat.png",
+        imgUrl: BoatImg,
         extraClass: "",
       },
       {
         alt: "DALI e.V. Web page",
-        imgUrl: "/src/assets/images/prof_exp/dali/dali_screen2.png",
+        imgUrl: DaliPageImg,
         extraClass: "big-horizontal-img",
       }
     ],
