@@ -17,8 +17,9 @@ import { ReactLenis } from 'lenis/react'
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function MainContent() {
-  const masterTl = useRef(gsap.timeline({ paused: true }));//useContext(MasterTimelineContext);
+export default function MainContent({showLoading}) {
+  const masterTl = useRef(gsap.timeline({ paused: true }));
+  //const mainRef = useRef(null);//useContext(MasterTimelineContext);
   const codeRef = useRef(null);
   const spotlightRef = useRef(null);
 
@@ -29,10 +30,14 @@ export default function MainContent() {
       lenisRef.current?.lenis?.raf(time * 1000)
     }
 
-    gsap.ticker.add(update)
-
+    if (showLoading) {
+      lenisRef.current?.lenis?.stop();
+    } else {
+      lenisRef.current?.lenis?.start();
+      gsap.ticker.add(update)
+    }
     return () => gsap.ticker.remove(update)
-  }, [])
+  }, [showLoading])
 
   useGSAP(() => {
     /*let smoother = ScrollSmoother.create({
@@ -60,10 +65,10 @@ export default function MainContent() {
     });
     tl.to(codeRef.current, {
       x: 0,
-      y: "-20vw",
+      y: "-200vh",
       scale: 1,
       //rotation: 720,
-      ease: 'expo.out',
+      //ease: 'expo.out',
       delay: 0.0,
       //duration: 0.3,
       //stagger: -0.07,
@@ -86,7 +91,7 @@ export default function MainContent() {
         <div className="bg-spotlight" ref={spotlightRef}/>
         <Home masterTl={masterTl} />
         <Abilities masterTl={masterTl} />
-        <TechStack maasterTl={masterTl} />
+         {/*<TechStack masterTl={masterTl} />*/}
         <ProfExp masterTl={masterTl} />
         <Education masterTl={masterTl} />
         <Footer masterTl={masterTl} />

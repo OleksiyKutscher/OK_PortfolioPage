@@ -42,7 +42,7 @@ export default function Home({masterTl}) {
 
   const portraitRef = useRef(null);
 
-  /*useGSAP(() => {
+  useGSAP(() => {
     const titleSplit = new SplitText(titleText.current, {type: 'chars, words'});
     const leftSplit = new SplitText(leftText.current, {type: 'chars, words'});
     const highlightSplit = new SplitText(hightlightText.current, {type: 'chars, words'})
@@ -50,6 +50,7 @@ export default function Home({masterTl}) {
 
     leftSplit.chars.forEach((char) => {char.classList.add("text-gradient")})
 
+    const initialLoadingDelay = 5
     /*gsap.from(titleSplit.chars, {
       color: 'var(--primary-color-0)',
       yPercent: -10,
@@ -57,45 +58,96 @@ export default function Home({masterTl}) {
       duration: 1,
       ease: 'expo.out',
       stagger: 0.07,
-    })
-
-    gsap.from(leftSplit.chars, {
+      delay: initialLoadingDelay,
+    })*/
+    /* text split animation */
+    const tl = gsap.timeline({delay: initialLoadingDelay});
+    tl.from(leftSplit.chars, {
       yPercent: -70,
       duration: 1.8,
       ease: 'expo.out',
       stagger: 0.07,
       opacity: 0,
-      delay: 1,
-    })
-
-    gsap.from(highlightSplit.chars, {
-      yPercent: 70,
-      duration: 1.5,
-      ease: 'bounce.out',
-      stagger: 0.07,
-      opacity: 0,
-      delay: 2,
-    })
-
-    gsap.from(rightSplit.chars, {
+      //delay: 1,
+    }, 1)
+    tl.from(rightSplit.chars, {
       yPercent: 70,
       duration: 1.5,
       ease: 'expo.out',
       stagger: 0.07,
       opacity: 0,
-      delay: 1,
-    })
+      //delay: 1 + initialLoadingDelay,
+    }, 1)
+    tl.from(highlightSplit.chars, {
+      yPercent: 70,
+      duration: 1.5,
+      ease: 'bounce.out',
+      stagger: 0.07,
+      opacity: 0,
+      //delay: 2,
+    }, 2)
 
-    gsap.from('.portrait-container', {
+    /* icon animations */
+    // start loops
+    clickLoopRef.current = createLoopTimeline(clickRef.current);
+    moveLoopRef.current = createLoopTimeline(moveRef.current);
+
+    // let icons appear
+    tl.to(clickRef.current, {
+      ...fadeScaleInVars(),
+      onComplete: () => {
+        clickLoopRef.current?.resume();
+      }
+    }, 3);
+    tl.to(moveRef.current, {
+      ...fadeScaleInVars(),
+      onComplete: () => {
+       moveLoopRef.current?.resume();
+      }
+    }, 3);
+
+    // let icons disappear on click or touch
+    const handleClick = (eleRef, loopRef) => {
+      gsap.to(eleRef.current, fadeScaleOutVars());
+      loopRef.current?.pause();
+    }
+    hightlightText.current.addEventListener('click', () => {handleClick(clickRef, clickLoopRef)});
+    portraitRef.current.addEventListener('click', () => {handleClick(moveRef, moveLoopRef)});
+    portraitRef.current.addEventListener('touchstart', () => {handleClick(moveRef, moveLoopRef)});
+
+    // let icons disappear if they leave viewport
+    const createViewPortHandler = (eleRef, loopRef) => {
+      ScrollTrigger.create({
+        trigger: eleRef.current,
+        start: "top bottom", // Startet die Überwachung
+        end: "bottom top",   // Endet, wenn das Element oben den Viewport verlässt
+        onLeave: () => {
+          handleClick(eleRef, loopRef);
+        },
+        onEnterBack: () => {
+          // show them when coming back to home page? always?
+          /*gsap.to(eleRef.current, {
+            ...fadeScaleInVars(),
+            onComplete: () => {
+              loopRef.current?.resume();
+            }
+          });*/
+        }
+      });
+    }
+    createViewPortHandler(clickRef, clickLoopRef);
+    createViewPortHandler(moveRef, moveLoopRef);
+    // TODO: only activate body scrolling after this point
+    /*gsap.from('.portrait-container', {
       yPercent: 15,
       duration: 1.5,
       ease: 'bounce.out',
       opacity: 0,
-      delay: 3,
-    })
+      delay: 3 + initialLoadingDelay,
+    })*/
 
 
-    clickLoopRef.current = createLoopTimeline(clickRef.current);
+    /*clickLoopRef.current = createLoopTimeline(clickRef.current);
     moveLoopRef.current = createLoopTimeline(moveRef.current);
 
     const tl = gsap.timeline({
@@ -124,53 +176,54 @@ export default function Home({masterTl}) {
     tl.to(clickRef.current, fadeScaleInVars(), 1);
     tl.to(clickRef.current, fadeScaleOutVars(), 2);
     tl.to(moveRef.current, fadeScaleInVars(), 1);
-    tl.to(moveRef.current, fadeScaleOutVars(), 2);
+    tl.to(moveRef.current, fadeScaleOutVars(), 2);*/
 
 
     const tl2 = gsap.timeline({
       scrollTrigger: {
-        trigger: '#home',
-        start: '+=1000',
-        end: '+=1000',
+        trigger: homeContainer.current,
+        start: 'top top',
+        end: 'bottom top',
         scrub: true,
         markers: true // 👈 Aktiviere Marker zum Debuggen!
       }
     })
+    const scrollUpAnimation = {
+      y: "-8vh",
+      opacity: 0,
+      ease: 'linear',
+    }
     tl2.to(leftSplit.chars, {
-      x: -600,
-      opacity: 0,
-      ease: 'power2.out',
-      //stagger: 0.07,
+      ...scrollUpAnimation,
+      //stagger: 0.04,
     },0)
-    tl2.to(titleSplit.chars, {
-      x: -600,
-      opacity: 0,
-      ease: 'power2.out',
-      delay: 0.1,
-    }, 0)
-    tl2.to(highlightSplit.chars, {
-      x: -600,
-      opacity: 0,
-      ease: 'power2.out',
+    tl2.to(portraitRef.current, {
+      ...scrollUpAnimation,
       delay: 0.2,
     }, 0)
+    tl2.to(titleSplit.chars, {
+      ...scrollUpAnimation,
+      delay: 0.2,
+    }, 0)
+    tl2.to(hightlightText.current, {
+     ...scrollUpAnimation,
+      delay: 0.6,
+    }, 0)
     tl2.to(rightSplit.chars, {
-      x: -700,
-      opacity: 0,
-      ease: 'power2.out',
-      delay: 0.3,
+      ...scrollUpAnimation,
+      delay: 0.7,
       //stagger: -0.07,
     },0)
 
     //const masterTL = gsap.timeline({})
-    masterTl.current.add(tl);
-    masterTl.current.add(tl2);
+   // masterTl.current.add(tl);
+    //masterTl.current.add(tl2);
   }, [
     masterTl,
     clickRef, clickLoopRef,
     moveRef, moveLoopRef,
-    portraitRef, leftText, rightText, titleText, hightlightText
-  ]);*/
+    portraitRef, leftText, rightText, titleText, hightlightText, homeContainer
+  ]);
 
   return (
     <section id="home" className="home-container" ref={homeContainer}>
@@ -181,7 +234,7 @@ export default function Home({masterTl}) {
           <span className="home-sub left" ref={leftText}>AI & ML Expert</span>
           <span className="home-title" ref={titleText}>Oleksiy <br/> Kutscher</span>
         </div>
-        <motion.div className="home-top-portrait" drag={true} dragSnapToOrigin={true} whileHover="hover">
+        <motion.div className="home-top-portrait" drag={true} dragSnapToOrigin={true} whileHover="hover" ref={portraitRef}>
           <img src={PortraitImg} alt="Portrait" draggable="false" />
           <motion.div
             className="portrait-highlight"

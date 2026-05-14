@@ -1,9 +1,9 @@
 import './Header.css';
 import {navLinks, headerButtonData} from '../../constants/index.js'
 
-export default function Header() {
+export default function Header({headerRef}) {
   return (
-    <div className="header">
+    <div className="header" ref={headerRef}>
 
       <a href="/"><span className="header-name">Oleksiy Kutscher</span></a>
       <ul className="header-links">

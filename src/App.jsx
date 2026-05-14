@@ -1,18 +1,32 @@
-import { Suspense, lazy } from 'react';
+import {Suspense, lazy, useState, useRef, useEffect} from 'react';
 
 // Die eigentliche Seite wird asynchron geladen
-const MainContent = lazy(() => import('./components/MainContent.jsx'));
+import MainContent from './components/MainContent.jsx';
 // Deine Ladeseite
 import LoadingScreen from './components/LoadingScreen.jsx';
+import gsap from "gsap";
 
 
 function App() {
 
-  return (
+  const [showLoading, setShowLoading] = useState(true);
 
-    <Suspense fallback={<LoadingScreen />}>
-      <MainContent />
-    </Suspense>
+  useEffect(() => {
+    if (!showLoading) {
+      document.body.classList.remove("stop-scrolling");
+    }
+  }, [showLoading]);
+
+  return (
+    <>
+     {/*<div style={{width: "100vw", height: "100vh", background: "red", position: "absolute", top: 0, }}></div>*/}
+      <LoadingScreen
+        onAnimationComplete={() => setShowLoading(false)}
+      />
+
+       <MainContent showLoading={showLoading} />
+    </>
+
 
   )
 }
