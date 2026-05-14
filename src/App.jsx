@@ -9,9 +9,11 @@ import LoadingScreen from './components/LoadingScreen.jsx';
 function App() {
 
   return (
+
     <Suspense fallback={<LoadingScreen />}>
       <MainContent />
     </Suspense>
+
   )
 }
 
