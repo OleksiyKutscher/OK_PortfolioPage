@@ -128,3 +128,15 @@
         height: 30vh;
     }
 }
+
+@media screen and (min-width: 1330px) {
+    .adjust-height {
+        height: 75vh;
+    }
+}
+
+@media screen and (min-width: 1560px) {
+    .adjust-height {
+        height: 80vh;
+    }
+}
