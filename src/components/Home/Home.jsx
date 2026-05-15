@@ -22,7 +22,7 @@ import {showAnimationMarkers} from "../../../constants/index.js";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
-export default function Home({masterTl}) {
+export default function Home() {
   const softTexts = ["creative", "proactive", "collaborative", "agile", "strategic"]
   const [text, setText] = useState(softTexts[0]);
   const [count, setCount] = useState(1);
@@ -53,6 +53,7 @@ export default function Home({masterTl}) {
 
     leftSplit.chars.forEach((char) => {char.classList.add("text-gradient")})
 
+    // TODO: buggy if scroll was not perfect on home, and sometimes buggy on scroll back
     const initialLoadingDelay = 5
     /*gsap.from(titleSplit.chars, {
       color: 'var(--primary-color-0)',
@@ -221,11 +222,7 @@ export default function Home({masterTl}) {
       //stagger: -0.07,
     },0)
 
-    //const masterTL = gsap.timeline({})
-   // masterTl.current.add(tl);
-    //masterTl.current.add(tl2);
   }, [
-    masterTl,
     clickRef, clickLoopRef,
     moveRef, moveLoopRef,
     portraitRef, leftText, rightText, titleText, highlightText, homeContainer, highlightTextContainer

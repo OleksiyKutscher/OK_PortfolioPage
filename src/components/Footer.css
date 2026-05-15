@@ -6,6 +6,7 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: baseline;
+    overflow: hidden;
     padding: 10px;
 }
 
@@ -16,6 +17,11 @@
     font-family: var(--manrope-font);
     font-weight: bold;
     color: var(--neutral-color-2);
+   /* width: 50%;
+    height: 100%;
+    padding: 10px;
+    min-height: stretch;
+    background-color: var(--neutral-color-0);*/
 }
 
 .policy-text {
@@ -34,6 +40,10 @@
     font-weight: bold;
     color: var(--neutral-color-2);
     gap: 10px;
+    /*width: 50%;
+    height: 100%;
+    padding: 10px;
+    background-color: var(--neutral-color-0);*/
 }
 
 

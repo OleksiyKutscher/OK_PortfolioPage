@@ -5,7 +5,7 @@ import {expEntryList, showAnimationMarkers} from "../../../constants/index.js";
 import {useGSAP} from "@gsap/react";
 import {createTitleAnimation} from "../../animations/index.js";
 
-export default function ProfExp({masterTl}) {
+export default function ProfExp() {
   const titleRef = useRef(null);
 
   useGSAP(() => {

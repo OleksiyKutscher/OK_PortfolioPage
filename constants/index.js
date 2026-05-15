@@ -408,10 +408,12 @@ const websiteTechStack = [
 ]
 
 const showAnimationMarkers = {
+  mainContent: false,
   home: false,
   abilities: false,
   exp: false,
-  edu: true,
+  edu: false,
+  footer: false,
 };
 
 const isMobile = window.screen.width <= 520;

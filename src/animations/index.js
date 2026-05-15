@@ -136,3 +136,45 @@ export function createTitleAnimation(titleRef, showMarkers, showOutro) {
     ease: "sine.inOut",
   });
 }
+
+export function scrambleRevealAnimation(containerRef, triggerStart, triggerEnd, markerID, elementSelector, splitType) {
+   const tl4 = gsap.timeline({
+      scrollTrigger: {
+        trigger: containerRef.current,
+        start: triggerStart,
+        end:  triggerEnd,
+        scrub: true,
+        markers: showAnimationMarkers.edu,
+        id: markerID
+      }
+    });
+    containerRef.current.querySelectorAll(elementSelector).forEach(element => {
+      const split = new SplitText(element, {type: splitType});
+      let elementArray;
+      if (splitType.includes('chars')) {
+        elementArray = split.chars;
+      } else {
+        elementArray = split.words;
+      }
+
+      // Startzustand: Alle Buchstaben komplett unsichtbar machen
+      tl4.set(element, {
+        autoAlpha: 1
+      });
+      tl4.set(elementArray, {
+        opacity: 0,
+        yPercent: -10,
+      });
+      tl4.to(elementArray, {
+        opacity: 1,
+        yPercent: 0,
+        stagger: 0.05,
+        scrambleText: {
+          text: "{original}",
+          chars: "!@#$%^&*()_+AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz", // Rotations-Zeichen
+          speed: 0.5,
+          revealDelay: 0.2
+        }
+      });
+    });
+}

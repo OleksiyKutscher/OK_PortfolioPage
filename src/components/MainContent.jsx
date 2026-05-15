@@ -19,8 +19,7 @@ import {showAnimationMarkers} from "../../constants/index.js";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function MainContent({showLoading}) {
-  const masterTl = useRef(gsap.timeline({ paused: true }));
-  //const mainRef = useRef(null);//useContext(MasterTimelineContext);
+
   const codeRef = useRef(null);
   const spotlightRef = useRef(null);
 
@@ -31,37 +30,23 @@ export default function MainContent({showLoading}) {
       lenisRef.current?.lenis?.raf(time * 1000)
     }
 
-    /*if (showLoading) {
+    if (showLoading) {
       lenisRef.current?.lenis?.stop();
-    } else {*/
+    } else {
       lenisRef.current?.lenis?.start();
       gsap.ticker.add(update)
-    //}
+    }
     return () => gsap.ticker.remove(update)
   }, [showLoading])
 
   useGSAP(() => {
-    /*let smoother = ScrollSmoother.create({
-      smooth: 2,
-      effects: true,
-      normalizeScroll: true
-    });*/
-
-    /*ScrollTrigger.create({
-      trigger: spotlightRef.current,
-      pin: true,           // Keeps it "fixed" during scroll
-      start: "top top",    // When the top of element hits top of viewport
-      end: "max",
-      pinSpacing: false    // Prevents pushing other content down
-    });*/
-    //spotlightRef.current.parentElement.style.position = "fixed";
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#content',
         start: 'top top',
         end: 'bottom bottom',
         scrub: true,
-        markers: showAnimationMarkers
+        markers: showAnimationMarkers.mainContent
       }
     });
     tl.to(codeRef.current, {
@@ -74,8 +59,8 @@ export default function MainContent({showLoading}) {
       //duration: 0.3,
       //stagger: -0.07,
     },0)
-    masterTl.current.add(tl);
-  }, [masterTl, codeRef]);
+
+  }, [codeRef]);
   return (
     <>
       {/*<div className="top-glow"/>*/}
@@ -90,12 +75,12 @@ export default function MainContent({showLoading}) {
           {/*<img src={CodeImg} alt="code" ref={portraitRef}/>*/}
         </div>
         <div className="bg-spotlight" ref={spotlightRef}/>
-        <Home masterTl={masterTl} />
-        <Abilities masterTl={masterTl} />
-         {/*<TechStack masterTl={masterTl} />*/}
-        <ProfExp masterTl={masterTl} />
-        <Education masterTl={masterTl} />
-        <Footer masterTl={masterTl} />
+        <Home />
+        <Abilities />
+         {/*<TechStack />*/}
+        <ProfExp />
+        <Education />
+        <Footer />
         {/*<div className="technical-grid">
 
           <div style={{ marginTop: '100vh', width:'100px', height:'100px', backgroundColor: "red" }}></div>

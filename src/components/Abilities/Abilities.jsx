@@ -8,7 +8,7 @@ import {abilities, showAnimationMarkers} from "../../../constants/index.js";
 import {createTitleAnimation} from "../../animations/index.js";
 
 
-export default function Abilities({masterTl}) {
+export default function Abilities() {
   const abilityContainerRef = useRef(null);
   const titleRef = useRef(null);
   const cardContainerRef = useRef(null);

@@ -1,22 +1,87 @@
 import './Footer.css';
 import Modal from "./Modal";
-import {websiteTechStack} from "../../constants/index.js";
+import {showAnimationMarkers, websiteTechStack} from "../../constants/index.js";
 import TechElement from "./TechElement.jsx";
-import {useState} from "react";
+import {useRef, useState} from "react";
 import AdressImg from "../assets/images/imprint/address.png";
 import EmailImg from "../assets/images/imprint/email.png";
 import TelImg from "../assets/images/imprint/tel.png";
+import {useGSAP} from "@gsap/react";
+import gsap from "gsap";
 
-export default function Footer({masterTl}) {
+
+export default function Footer() {
   const [isImpressumModalOpen, setImpressumModalOpen] = useState(false);
   const [isDatenschutzModalOpen, setDatenschutzModalOpen] = useState(false);
+
+  const policyContainerRef = useRef(null);
+  const techContainerRef = useRef(null);
+  const footerRef = useRef(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: footerRef.current,
+        //pin: true,
+        start: "top bottom",
+        end: "bottom bottom",
+        scrub: true,
+        markers: showAnimationMarkers.footer,
+        id: "footer"
+      }
+    });
+    tl.from(policyContainerRef.current, {
+      opacity: 0,
+      x: -100,
+      stagger: 0.05,
+      ease: "expo.out",
+    }, 0);
+    tl.from(techContainerRef.current, {
+      opacity: 0,
+      x: 100,
+      stagger: 0.05,
+      ease: "expo.out",
+    }, 0);
+    /*[policyContainerRef.current, techContainerRef.current].forEach((element, index) => {
+      let rotationIndex = (index % 2 === 0) ? -1 : 1;
+      gsap.fromTo(element, {
+          opacity: 0.7,
+          rotationX: -45,     // Neigung nach hinten
+          rotationY: rotationIndex * -15,      // Leichte Seitendrehung
+          rotationZ: rotationIndex * -2,
+          //y: 100,             // Startposition weiter unten
+          //z: -100,            // Startposition in die Tiefe versetzt
+        },
+        {
+          opacity: 1,
+          rotationX: 0,       // Ziel-Rotation (flach)
+          rotationY: 0,
+          rotationZ: 0,
+          y: 0,
+          z: 0,
+          ease: "linear",
+          scrollTrigger: {
+            trigger: element,     // Jede Card triggert sich selbst
+            start: "top bottom",  // Animation startet, wenn die Card 85% im Viewport ist
+            end: "bottom bottom",    // Animation endet, wenn sie weiter oben ist
+            scrub: 1,          // 1 Sekunde sanftes Nachlaufen beim Scrollen
+            pin: true,
+            pinSpacing: true,
+            markers: showAnimationMarkers.footer,
+            id: "footer-rotation"
+          }
+        }
+      );
+    });*/
+  }, [footerRef, policyContainerRef, techContainerRef]);
+
   return (
-    <div className="footer">
-      <div className="policy-container">
+    <div className="footer" ref={footerRef}>
+      <div className="policy-container" ref={policyContainerRef}>
         <div className="policy-text" onClick={() => setImpressumModalOpen(true)}>Impressum / Imprint</div>
         <div className="policy-text" onClick={() => setDatenschutzModalOpen(true)}>Datenschutz / Privacy Policy</div>
       </div>
-      <div className="tech-stack">
+      <div className="tech-stack" ref={techContainerRef}>
         <div className="">Website made using:</div>
         <div className="tech-container">
           {websiteTechStack.map((name, index) => (

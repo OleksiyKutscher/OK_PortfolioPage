@@ -5,7 +5,7 @@ import WordCloud from "./WordCloud.jsx";
 import {motion} from "framer-motion";
 import {useRef} from "react";
 
-export default function TechStack({masterTl}) {
+export default function TechStack() {
   const techContainerRef = useRef(null);
   return (
     <section id="tech" className="vh-section tech-stack-container" ref={techContainerRef}>

@@ -6,24 +6,7 @@ import gsap from "gsap";
 import {showAnimationMarkers} from "../../../constants/index.js";
 import {SplitText} from "gsap/all";
 
-// 1. Helfer-Funktion zum Vorabladen und Dekodieren
-const preloadImages = (imageUrls) => {
-  const promises = imageUrls.map((data) => {
-    return new Promise((resolve, reject) => {
-      const img = new Image();
-      img.src = data.imgUrl;
-      img.onload = () => {
-        // WICHTIG: Erzwingt die Dekodierung in der GPU vorab
-        img.decode()
-          .then(() => resolve(data.imgUrl))
-          .catch(() => resolve(data.imgUrl)); // Fallback, falls decode fehlschlägt
-      };
-      img.onerror = reject;
-    });
-  });
-  return Promise.all(promises);
-};
-
+gsap.registerPlugin(SplitText);
 
 export default function ExpEntry(
   {location, date, title, description, techStack, imageData, rightAlign, extraClass}
@@ -35,15 +18,6 @@ export default function ExpEntry(
   const titleRef = useRef(null);
   const descriptionContainerRef = useRef(null);
   const techStackRef = useRef(null);
-
-  const [imagesLoaded, setImagesLoaded] = useState(false);
-
-  /*useEffect(() => {
-    preloadImages(imageData)
-      .then(() => setImagesLoaded(true))
-      .catch((err) => console.error("Fehler beim Laden der Bilder", err));
-  }, [imageData]);*/
-
 
   useGSAP(() => {
     const isMobile = window.screen.width <= 520;
@@ -148,7 +122,6 @@ export default function ExpEntry(
     }
 
   }, [
-    imagesLoaded,
     imgContainerRef, textContainerRef,
     headerRef, titleRef, descriptionContainerRef, techStackRef]);
   return (

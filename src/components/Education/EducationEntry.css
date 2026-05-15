@@ -26,11 +26,13 @@
     font-family: var(--main-font);
     font-weight: bold;
     color: var(--primary-color-0);
+    visibility: hidden;
 }
 
 .edu-text-container {
     display: flex;
     flex-direction: column;
+    visibility: hidden;
 }
 
 .edu-study-field {
