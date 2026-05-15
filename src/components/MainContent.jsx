@@ -14,6 +14,7 @@ import ProfExp from "./ProfExp/ProfExp.jsx";
 import Education from "./Education/Education.jsx";
 import Footer from "./Footer.jsx";
 import { ReactLenis } from 'lenis/react'
+import {showAnimationMarkers} from "../../constants/index.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -30,12 +31,12 @@ export default function MainContent({showLoading}) {
       lenisRef.current?.lenis?.raf(time * 1000)
     }
 
-    if (showLoading) {
+    /*if (showLoading) {
       lenisRef.current?.lenis?.stop();
-    } else {
+    } else {*/
       lenisRef.current?.lenis?.start();
       gsap.ticker.add(update)
-    }
+    //}
     return () => gsap.ticker.remove(update)
   }, [showLoading])
 
@@ -58,17 +59,17 @@ export default function MainContent({showLoading}) {
       scrollTrigger: {
         trigger: '#content',
         start: 'top top',
-        end: 'bottom top',
+        end: 'bottom bottom',
         scrub: true,
-        //markers: true
+        markers: showAnimationMarkers
       }
     });
     tl.to(codeRef.current, {
       x: 0,
-      y: "-200vh",
+      y: "-300vh",
       scale: 1,
       //rotation: 720,
-      //ease: 'expo.out',
+      ease: 'linear',
       delay: 0.0,
       //duration: 0.3,
       //stagger: -0.07,

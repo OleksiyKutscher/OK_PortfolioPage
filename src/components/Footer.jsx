@@ -33,15 +33,14 @@ export default function Footer({masterTl}) {
           <h3>Angaben gemäß § 5 DDG</h3>
           <h4>Name und Anschrift:</h4>
           <p>Oleksiy Kutscher</p>
-          <div className="imprint-img-container"><img src={AdressImg} alt="adresse"/></div> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
-          <p>Kontakt:</p>
+          <div className="imprint-img-container address-container"><img src={AdressImg} alt="adresse"/></div> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
           <p>Telefon: </p>
-            <div className="imprint-img-container"><img src={TelImg} alt="tel"/></div>
-            <p>E-Mail: </p>
-            <div className="imprint-img-container"><img src={EmailImg} alt="email"/></div>
+          <div className="imprint-img-container tel-container"><img src={TelImg} alt="tel"/></div>
+          <p>E-Mail: </p>
+          <div className="imprint-img-container"><img src={EmailImg} alt="email"/></div>
           <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h3>
           <p>Oleksiy Kutscher</p>
-            <div className="imprint-img-container"><img src={AdressImg} alt="adresse"/></div> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
+            <div className="imprint-img-container address-container"><img src={AdressImg} alt="adresse"/></div> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
         </div>
         <div >
           <h2>Nutzungsbedingungen & Haftungsausschluss</h2>
@@ -61,12 +60,12 @@ export default function Footer({masterTl}) {
             Alle auf dieser Webseite veröffentlichten Inhalte (Texte, Bilder, Grafiken) unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen meiner schriftlichen Zustimmung.
           </p>
         </div>
-        <div>
-          <h2>Bildnachweise</h2>
-          <p>Tokyo Tower: Foto von <a href="https://unsplash.com/de/@mattmutluu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Matt Mutlu</a> auf <a href="https://unsplash.com/de/fotos/die-spitze-des-eiffelturms-leuchtet-nachts-xn8ZPG6viiw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
-          <p>Drone: Foto von <a href="https://unsplash.com/de/@kevinchow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kevin Chow</a> auf <a href="https://unsplash.com/de/fotos/weisser-dji-quadcopter-der-phantom-serie-der-tagsuber-fliegt-9y0U_DEg0XI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
-          <p>Batteries: Foto von <a href="https://unsplash.com/de/@roberto_sorin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roberto Sorin</a> auf <a href="https://unsplash.com/de/fotos/braune-grune-und-blaue-runde-knopfe-ZZ3qxWFZNRg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
-        </div>
+
+        <h2 className="bildnachweise">Bildnachweise</h2>
+        <p>Tokyo Tower: Foto von <a target="_blank" href="https://unsplash.com/de/@mattmutluu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Matt Mutlu</a> auf <a target="_blank" href="https://unsplash.com/de/fotos/die-spitze-des-eiffelturms-leuchtet-nachts-xn8ZPG6viiw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        <p>Drone: Foto von <a target="_blank" href="https://unsplash.com/de/@kevinchow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kevin Chow</a> auf <a target="_blank" href="https://unsplash.com/de/fotos/weisser-dji-quadcopter-der-phantom-serie-der-tagsuber-fliegt-9y0U_DEg0XI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        <p>Batteries: Foto von <a target="_blank" href="https://unsplash.com/de/@roberto_sorin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roberto Sorin</a> auf <a target="_blank" href="https://unsplash.com/de/fotos/braune-grune-und-blaue-runde-knopfe-ZZ3qxWFZNRg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        <p>Code: Foto von Leonid Altman auf <a target="_blank" href="https://www.pexels.com/de-de/foto/netz-verschlusselung-programmierung-entwicklung-5125366/">Pexels</a></p>
 
       </Modal>
       <Modal
@@ -81,7 +80,7 @@ export default function Footer({masterTl}) {
         <p>
           Oleksiy Kutscher
         </p>
-        <div className="imprint-img-container"><img src={AdressImg} alt="adresse"/></div>
+        <div className="imprint-img-container address-container"><img src={AdressImg} alt="adresse"/></div>
         <p>
           E-Mail:
         </p>

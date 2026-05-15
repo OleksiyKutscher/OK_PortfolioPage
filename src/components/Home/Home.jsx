@@ -13,16 +13,17 @@ import {useGSAP} from "@gsap/react";
 import { SplitText, ScrollTrigger} from "gsap/all";
 import gsap from "gsap";
 import {MasterTimelineContext} from "../../MasterTimelineContext.jsx";
-import {createLoopTimeline, createScrollDownLoop, fadeScaleInVars, fadeScaleOutVars} from "./animations.js";
+import {createLoopTimeline, createScrollDownLoop, fadeScaleInVars, fadeScaleOutVars} from "../../animations/index.js";
 import DownArrowSrc from "../../assets/icons/down_arrow.png";
 import PortraitImg from "../../assets/images/portrait_cut.jpg";
 import PortraitEditImg from "../../assets/images/portrait_cut_edit.png";
 import CodeImg from "../../assets/images/code.png";
+import {showAnimationMarkers} from "../../../constants/index.js";
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
 export default function Home({masterTl}) {
-  const softTexts = ["creative", "proactive", "smart"]
+  const softTexts = ["creative", "proactive", "collaborative", "agile", "strategic"]
   const [text, setText] = useState(softTexts[0]);
   const [count, setCount] = useState(1);
   function handleClick() {
@@ -32,8 +33,10 @@ export default function Home({masterTl}) {
   const homeContainer = useRef(null);
   const leftText = useRef(null);
   const rightText = useRef(null);
-  const hightlightText = useRef(null);
+  const highlightText = useRef(null);
   const titleText = useRef(null);
+
+  const highlightTextContainer = useRef(null);
 
   const clickRef = useRef(null);
   const clickLoopRef = useRef(null);
@@ -45,7 +48,7 @@ export default function Home({masterTl}) {
   useGSAP(() => {
     const titleSplit = new SplitText(titleText.current, {type: 'chars, words'});
     const leftSplit = new SplitText(leftText.current, {type: 'chars, words'});
-    const highlightSplit = new SplitText(hightlightText.current, {type: 'chars, words'})
+    const highlightSplit = new SplitText(highlightText.current, {type: 'chars, words'})
     const rightSplit = new SplitText(rightText.current, {type: 'chars, words'});
 
     leftSplit.chars.forEach((char) => {char.classList.add("text-gradient")})
@@ -111,7 +114,7 @@ export default function Home({masterTl}) {
       gsap.to(eleRef.current, fadeScaleOutVars());
       loopRef.current?.pause();
     }
-    hightlightText.current.addEventListener('click', () => {handleClick(clickRef, clickLoopRef)});
+    highlightText.current.addEventListener('click', () => {handleClick(clickRef, clickLoopRef)});
     portraitRef.current.addEventListener('click', () => {handleClick(moveRef, moveLoopRef)});
     portraitRef.current.addEventListener('touchstart', () => {handleClick(moveRef, moveLoopRef)});
 
@@ -137,6 +140,7 @@ export default function Home({masterTl}) {
     }
     createViewPortHandler(clickRef, clickLoopRef);
     createViewPortHandler(moveRef, moveLoopRef);
+
     // TODO: only activate body scrolling after this point
     /*gsap.from('.portrait-container', {
       yPercent: 15,
@@ -185,7 +189,7 @@ export default function Home({masterTl}) {
         start: 'top top',
         end: 'bottom top',
         scrub: true,
-        markers: true // 👈 Aktiviere Marker zum Debuggen!
+        markers: showAnimationMarkers.home
       }
     })
     const scrollUpAnimation = {
@@ -193,21 +197,23 @@ export default function Home({masterTl}) {
       opacity: 0,
       ease: 'linear',
     }
+    const media767 = window.screen.width <= 767;
     tl2.to(leftSplit.chars, {
       ...scrollUpAnimation,
+       delay: media767 ? 0.2 : 0,
       //stagger: 0.04,
     },0)
     tl2.to(portraitRef.current, {
       ...scrollUpAnimation,
-      delay: 0.2,
+      delay: media767 ? 0 : 0.2,
     }, 0)
     tl2.to(titleSplit.chars, {
       ...scrollUpAnimation,
       delay: 0.2,
     }, 0)
-    tl2.to(hightlightText.current, {
+    tl2.to(highlightTextContainer.current, {
      ...scrollUpAnimation,
-      delay: 0.6,
+      delay: 0.5,
     }, 0)
     tl2.to(rightSplit.chars, {
       ...scrollUpAnimation,
@@ -222,7 +228,7 @@ export default function Home({masterTl}) {
     masterTl,
     clickRef, clickLoopRef,
     moveRef, moveLoopRef,
-    portraitRef, leftText, rightText, titleText, hightlightText, homeContainer
+    portraitRef, leftText, rightText, titleText, highlightText, homeContainer, highlightTextContainer
   ]);
 
   return (
@@ -247,18 +253,18 @@ export default function Home({masterTl}) {
           <AnimatedIcon
             id="move"
             iconUrl={MoveIconSrc}
-            extraStyle={{right: "7vw", top: "30vw", backgroundColor: "var(--secondary-color-2)"}}
+            extraStyle={{right: window.screen.width <= 1024 ? "3vw" : "1vw", top: "25vh", backgroundColor: "var(--secondary-color-2)"}}
             ref={moveRef}
           />
         </motion.div>
       </div>
       <div className="home-bottom">
-        <div className="creative-text-container">
-          <span className="home-sub highlight" onClick={handleClick} ref={hightlightText}>{text}</span>
+        <div className="creative-text-container" ref={highlightTextContainer}>
+          <span className="home-sub highlight" onClick={handleClick} ref={highlightText}>{text}</span>
           <AnimatedIcon
             id="click"
             iconUrl={ClickIconSrc}
-            extraStyle={{left: "16vw", top: "3vw", backgroundColor: "var(--secondary-color-1)"}}
+            extraStyle={{right: "-2vw", top: "2vh", backgroundColor: "var(--secondary-color-1)"}}
             ref={clickRef}
           />
         </div>

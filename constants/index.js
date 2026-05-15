@@ -53,11 +53,11 @@ const navLinks = [
     id: 'abilities',
     title: 'Core Abilities',
   },
-  {
+  /*{
     id: 'tech',
     title: 'Tech Stack',
   },
-  /*{
+  {
     id: 'showcase',
     title: 'Showcase',
   },*/
@@ -407,6 +407,15 @@ const websiteTechStack = [
   "react", "figma", "gsap", "lenis", "motion", "css"
 ]
 
+const showAnimationMarkers = {
+  home: false,
+  abilities: false,
+  exp: false,
+  edu: true,
+};
+
+const isMobile = window.screen.width <= 520;
+
 export {
   navLinks,
   headerButtonData,
@@ -415,5 +424,7 @@ export {
   techMap,
   expEntryList,
   educationEntryList,
-  websiteTechStack
+  websiteTechStack,
+  showAnimationMarkers,
+  isMobile,
 };

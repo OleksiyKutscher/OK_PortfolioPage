@@ -12,17 +12,18 @@ function App() {
   const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
-    if (!showLoading) {
+    /*if (!showLoading) {
       document.body.classList.remove("stop-scrolling");
-    }
-  }, [showLoading]);
+    }*/
 
+  }, [showLoading]);
+  document.body.classList.remove("stop-scrolling");
   return (
     <>
      {/*<div style={{width: "100vw", height: "100vh", background: "red", position: "absolute", top: 0, }}></div>*/}
-      <LoadingScreen
+      {/*<LoadingScreen
         onAnimationComplete={() => setShowLoading(false)}
-      />
+      />*/}
 
        <MainContent showLoading={showLoading} />
     </>

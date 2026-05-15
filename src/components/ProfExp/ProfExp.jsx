@@ -1,10 +1,16 @@
 import './ProfExp.css';
 import {useRef} from "react";
 import ExpEntry from "./ExpEntry";
-import {expEntryList} from "../../../constants/index.js";
+import {expEntryList, showAnimationMarkers} from "../../../constants/index.js";
+import {useGSAP} from "@gsap/react";
+import {createTitleAnimation} from "../../animations/index.js";
 
 export default function ProfExp({masterTl}) {
   const titleRef = useRef(null);
+
+  useGSAP(() => {
+    createTitleAnimation(titleRef, showAnimationMarkers.exp, true);
+  }, [titleRef]);
 
   return (
     <section id="prof-exp" className="prof-exp-container">

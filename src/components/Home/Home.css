@@ -120,7 +120,7 @@
 
 .creative-text-container {
     position: relative;
-    z-index: 100;
+    z-index: 400;
 }
 
 .home-sub.highlight {

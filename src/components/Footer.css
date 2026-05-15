@@ -59,9 +59,23 @@
 .imprint-img-container {
     width: 200px;
 
+
     & img {
         width: 100%;
         height: 100%;
         object-fit: contain;
     }
+}
+
+.address-container {
+    width: 160px;
+    margin-top: 5px;
+}
+
+.tel-container {
+    width: 125px;
+}
+
+.bildnachweise {
+    margin-top: 5px;
 }
