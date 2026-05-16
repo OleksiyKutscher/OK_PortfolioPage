@@ -23,9 +23,9 @@ function App() {
      {/*<div style={{width: "100vw", height: "100vh", background: "red", position: "absolute", top: 0, }}></div>*/}
       <LoadingScreen
         onAnimationComplete={() => setShowLoading(false)}
-      />
+      /> {/*onAnimationComplete={() => setShowLoading(false)}*/}
 
-       <MainContent showLoading={showLoading} />
+       <MainContent showLoading={showLoading} />{/*showLoading={showLoading} onAnimationComplete={() => setShowLoading(false)}*/}
     </>
 
 

@@ -4,7 +4,7 @@ import Portrait from "./Home/Portrait.jsx";
 import Home from './Home/Home.jsx';
 import AboutMe from './AboutMe/AboutMe.jsx';
 import Abilities from './Abilities/Abilities.jsx';
-import {useContext, useEffect, useRef} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import {SplitText, ScrollTrigger} from "gsap/all";
@@ -25,6 +25,8 @@ export default function MainContent({showLoading}) {
 
   const lenisRef = useRef()
 
+  //const [showLoading, setShowLoading] = useState(true);
+
   useEffect(() => {
     function update(time) {
       lenisRef.current?.lenis?.raf(time * 1000)
@@ -33,6 +35,7 @@ export default function MainContent({showLoading}) {
     if (showLoading) {
       lenisRef.current?.lenis?.stop();
     } else {
+      //document.body.classList.remove("stop-scrolling");
       lenisRef.current?.lenis?.start();
       gsap.ticker.add(update)
     }
@@ -75,7 +78,7 @@ export default function MainContent({showLoading}) {
           {/*<img src={CodeImg} alt="code" ref={portraitRef}/>*/}
         </div>
         <div className="bg-spotlight" ref={spotlightRef}/>
-        <Home />
+        <Home  />{/*onAnimationComplete={() => setShowLoading(false)}*/}
         <Abilities />
          {/*<TechStack />*/}
         <ProfExp />

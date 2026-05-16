@@ -53,7 +53,6 @@ export default function Home() {
 
     leftSplit.chars.forEach((char) => {char.classList.add("text-gradient")})
 
-    // TODO: buggy if scroll was not perfect on home, and sometimes buggy on scroll back
     const initialLoadingDelay = 5
     /*gsap.from(titleSplit.chars, {
       color: 'var(--primary-color-0)',
@@ -65,7 +64,17 @@ export default function Home() {
       delay: initialLoadingDelay,
     })*/
     /* text split animation */
-    const tl = gsap.timeline({delay: initialLoadingDelay});
+    const tl = gsap.timeline({
+      /*scrollTrigger: {
+        trigger: homeContainer.current,
+        start: 'top top',
+        end: '+=1000',
+        pin: true,
+        scrub: true,
+        markers: showAnimationMarkers.home
+      },*/
+      delay: initialLoadingDelay
+    });
     tl.from(leftSplit.chars, {
       yPercent: -70,
       duration: 1.8,
@@ -107,17 +116,22 @@ export default function Home() {
       ...fadeScaleInVars(),
       onComplete: () => {
        moveLoopRef.current?.resume();
+       //onAnimationComplete();
       }
     }, 3);
 
     // let icons disappear on click or touch
-    const handleClick = (eleRef, loopRef) => {
+    const fadeOut = (eleRef, loopRef) => {
       gsap.to(eleRef.current, fadeScaleOutVars());
       loopRef.current?.pause();
     }
-    highlightText.current.addEventListener('click', () => {handleClick(clickRef, clickLoopRef)});
-    portraitRef.current.addEventListener('click', () => {handleClick(moveRef, moveLoopRef)});
-    portraitRef.current.addEventListener('touchstart', () => {handleClick(moveRef, moveLoopRef)});
+    const fadeIn = (eleRef, loopRef) => {
+      gsap.to(eleRef.current, fadeScaleInVars());
+      loopRef.current?.resume();
+    }
+    highlightText.current.addEventListener('click', () => {fadeOut(clickRef, clickLoopRef)});
+    portraitRef.current.addEventListener('click', () => {fadeOut(moveRef, moveLoopRef)});
+    portraitRef.current.addEventListener('touchstart', () => {fadeOut(moveRef, moveLoopRef)});
 
     // let icons disappear if they leave viewport
     const createViewPortHandler = (eleRef, loopRef) => {
@@ -126,64 +140,17 @@ export default function Home() {
         start: "top bottom", // Startet die Überwachung
         end: "bottom top",   // Endet, wenn das Element oben den Viewport verlässt
         onLeave: () => {
-          handleClick(eleRef, loopRef);
+          fadeOut(eleRef, loopRef);
         },
         onEnterBack: () => {
-          // show them when coming back to home page? always?
-          /*gsap.to(eleRef.current, {
-            ...fadeScaleInVars(),
-            onComplete: () => {
-              loopRef.current?.resume();
-            }
-          });*/
+          fadeIn(eleRef, loopRef);
         }
       });
     }
     createViewPortHandler(clickRef, clickLoopRef);
     createViewPortHandler(moveRef, moveLoopRef);
 
-    // TODO: only activate body scrolling after this point
-    /*gsap.from('.portrait-container', {
-      yPercent: 15,
-      duration: 1.5,
-      ease: 'bounce.out',
-      opacity: 0,
-      delay: 3 + initialLoadingDelay,
-    })*/
-
-
-    /*clickLoopRef.current = createLoopTimeline(clickRef.current);
-    moveLoopRef.current = createLoopTimeline(moveRef.current);
-
-    const tl = gsap.timeline({
-      scrollTrigger: {
-        trigger: '#content',
-        start: 'top top',
-        end: '+=1000',
-        scrub: true,
-        pin: true,
-        anticipatePin: true,
-        invalidateOnRefresh: true,
-        markers: true, // 👈 Aktiviere Marker zum Debuggen!,
-        onUpdate: (self) => {
-          //console.log(self.progress)
-          // Wenn man ganz oben ist (progress 0), sicherstellen, dass Loop aus ist
-          if (self.progress <= 0.01 || self.progress >= 0.99) {
-            clickLoopRef.current?.pause();
-            moveLoopRef.current?.pause();
-          } else {
-            clickLoopRef.current?.resume();
-            moveLoopRef.current?.resume();
-          }
-        },
-      }
-    })
-    tl.to(clickRef.current, fadeScaleInVars(), 1);
-    tl.to(clickRef.current, fadeScaleOutVars(), 2);
-    tl.to(moveRef.current, fadeScaleInVars(), 1);
-    tl.to(moveRef.current, fadeScaleOutVars(), 2);*/
-
-
+    // outro scroll up animation
     const tl2 = gsap.timeline({
       scrollTrigger: {
         trigger: homeContainer.current,
@@ -199,7 +166,7 @@ export default function Home() {
       ease: 'linear',
     }
     const media767 = window.screen.width <= 767;
-    tl2.to(leftSplit.chars, {
+    tl2.to(leftText.current, {
       ...scrollUpAnimation,
        delay: media767 ? 0.2 : 0,
       //stagger: 0.04,
@@ -208,7 +175,7 @@ export default function Home() {
       ...scrollUpAnimation,
       delay: media767 ? 0 : 0.2,
     }, 0)
-    tl2.to(titleSplit.chars, {
+    tl2.to(titleText.current, {
       ...scrollUpAnimation,
       delay: 0.2,
     }, 0)
@@ -216,7 +183,7 @@ export default function Home() {
      ...scrollUpAnimation,
       delay: 0.5,
     }, 0)
-    tl2.to(rightSplit.chars, {
+    tl2.to(rightText.current, {
       ...scrollUpAnimation,
       delay: 0.7,
       //stagger: -0.07,

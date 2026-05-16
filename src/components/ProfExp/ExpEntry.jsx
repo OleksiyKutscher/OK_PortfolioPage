@@ -45,8 +45,8 @@ export default function ExpEntry(
     const tl2 = gsap.timeline({
       scrollTrigger: {
         trigger: textContainerRef.current,
-        start: "top 90%",
-        end: "top 50%",
+        start: "top 80%",
+        end: "top 40%",
         scrub: true,
         markers: showAnimationMarkers.exp,
         id: "text-visibility"
