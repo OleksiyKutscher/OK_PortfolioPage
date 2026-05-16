@@ -1,6 +1,6 @@
 import './Footer.css';
 import Modal from "./Modal";
-import {showAnimationMarkers, websiteTechStack} from "../../constants/index.js";
+import {footerText, showAnimationMarkers, websiteTechStack} from "../../constants/index.js";
 import TechElement from "./TechElement.jsx";
 import {useRef, useState} from "react";
 import AdressImg from "../assets/images/imprint/address.png";
@@ -10,7 +10,7 @@ import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 
 
-export default function Footer() {
+export default function Footer({language}) {
   const [isImpressumModalOpen, setImpressumModalOpen] = useState(false);
   const [isDatenschutzModalOpen, setDatenschutzModalOpen] = useState(false);
 
@@ -78,11 +78,11 @@ export default function Footer() {
   return (
     <div className="footer" ref={footerRef}>
       <div className="policy-container" ref={policyContainerRef}>
-        <div className="policy-text" onClick={() => setImpressumModalOpen(true)}>Impressum / Imprint</div>
-        <div className="policy-text" onClick={() => setDatenschutzModalOpen(true)}>Datenschutz / Privacy Policy</div>
+        <div className="policy-text" onClick={() => setImpressumModalOpen(true)}>{footerText.imprint[language]}</div>
+        <div className="policy-text" onClick={() => setDatenschutzModalOpen(true)}>{footerText.privacy[language]}</div>
       </div>
       <div className="tech-stack" ref={techContainerRef}>
-        <div className="">Website made using:</div>
+        <div className="">{footerText.tech[language]}</div>
         <div className="tech-container">
           {websiteTechStack.map((name, index) => (
             <TechElement key={index} name={name} />

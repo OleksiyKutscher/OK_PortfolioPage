@@ -90,6 +90,10 @@
         background-color: var(--neutral-color-5);
     }
 
+    &:hover > .header-text {
+        color: var(--neutral-color-5);
+    }
+
     & .header-icon {
         /*object-fit: contain;
         width: 100%;
@@ -106,6 +110,16 @@
 
         &:hover {
             background-color: var(--neutral-color-5);
+        }
+    }
+
+    & .header-text {
+        color: var(--primary-color-0);
+        font-family: var(--alexandria-font);
+        font-weight: bold;
+
+        &:hover {
+            color: var(--neutral-color-5);
         }
     }
 }

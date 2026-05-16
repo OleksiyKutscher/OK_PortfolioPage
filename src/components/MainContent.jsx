@@ -19,7 +19,15 @@ import {showAnimationMarkers} from "../../constants/index.js";
 gsap.registerPlugin(ScrollTrigger);
 
 export default function MainContent({showLoading}) {
-
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem('portfolio_lang') || 'de';
+  })
+  const handleLanguageChange = (newLang) => {
+    // 1. Sprache im Browser dauerhaft speichern
+    localStorage.setItem('portfolio_lang', newLang);
+    // 2. Seite neu laden (GSAP startet frisch, liest oben den gespeicherten Wert)
+    window.location.reload();
+  };
   const codeRef = useRef(null);
   const spotlightRef = useRef(null);
 
@@ -68,7 +76,7 @@ export default function MainContent({showLoading}) {
     <>
       {/*<div className="top-glow"/>*/}
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
-      <Header />
+      <Header language={language} updateLanguage={() => handleLanguageChange(language === 'de' ? 'en' : 'de')} />
 
       {/*<div id="smooth-wrapper">
         <div id="smooth-content">*/}
@@ -78,12 +86,12 @@ export default function MainContent({showLoading}) {
           {/*<img src={CodeImg} alt="code" ref={portraitRef}/>*/}
         </div>
         <div className="bg-spotlight" ref={spotlightRef}/>
-        <Home  />{/*onAnimationComplete={() => setShowLoading(false)}*/}
-        <Abilities />
+        <Home language={language} />{/*onAnimationComplete={() => setShowLoading(false)}*/}
+        <Abilities language={language} />
          {/*<TechStack />*/}
-        <ProfExp />
-        <Education />
-        <Footer />
+        <ProfExp language={language} />
+        <Education language={language} />
+        <Footer language={language} />
         {/*<div className="technical-grid">
 
           <div style={{ marginTop: '100vh', width:'100px', height:'100px', backgroundColor: "red" }}></div>

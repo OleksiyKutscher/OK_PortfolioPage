@@ -1,6 +1,6 @@
 import './Education.css';
 import EducationEntry from "./EducationEntry.jsx";
-import {educationEntryList, showAnimationMarkers} from "../../../constants/index.js";
+import {educationEntryList, navLinks, showAnimationMarkers} from "../../../constants/index.js";
 import {useRef} from "react";
 import {useGSAP} from "@gsap/react";
 import {createTitleAnimation, scrambleRevealAnimation} from "../../animations/index.js";
@@ -10,7 +10,7 @@ import {SplitText} from "gsap/all";
 
 gsap.registerPlugin(ScrambleTextPlugin, SplitText)
 
-export default function Education() {
+export default function Education({language}) {
   const titleRef  = useRef(null);
   const eduContainerRef = useRef(null);
   const entriesContainerRef = useRef(null);
@@ -100,16 +100,16 @@ export default function Education() {
   }, [titleRef, eduContainerRef]);
   return (
     <section id="education" className="education-container" ref={eduContainerRef}>
-      <h1 ref={titleRef}>Education</h1>
+      <h1 ref={titleRef}>{navLinks[2].title[language]}</h1>
       <div className="education-entries" ref={entriesContainerRef}>
         <div className="edu-line" ref={lineRef}></div>
         {educationEntryList.map((education, index  ) => (
           <EducationEntry
             key={index}
             date={education.date}
-            studyField={education.studyField}
-            location={education.location}
-            extra={education.extra}
+            studyField={education.studyField[language]}
+            location={education.location[language]}
+            extra={education.extra[language]}
           />
         ))}
       </div>

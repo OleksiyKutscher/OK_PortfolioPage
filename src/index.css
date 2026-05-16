@@ -103,9 +103,9 @@ h2 {
 
 /* Hintergrund der Leiste */
 ::-webkit-scrollbar-track {
-  background: var(--neutral-color-0);
+  background: var(--neutral-color-5);
   border: 1px solid black;
-  border-radius: 10px;
+  /*border-radius: 10px;*/
 }
 
 /* Der Griff */
@@ -114,10 +114,10 @@ h2 {
   border-radius: 10px;
 }
 
-/* Griff beim Drüberfahren */
+/* Griff beim Drüberfahren
 ::-webkit-scrollbar-thumb:hover {
-  filter: drop-shadow(0 0 10px var(--primary-color-0));
-}
+  border: 1px solid var(--neutral-color-1);
+}*/
 
 section {
   display: flex;

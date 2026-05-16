@@ -48,10 +48,15 @@ import DanceImg from  '../src/assets/images/prof_exp/dali/dance.png';
 import BoatImg from '../src/assets/images/prof_exp/dali/boat.png';
 import DaliPageImg from '../src/assets/images/prof_exp/dali/dali_screen2.png';
 
+const isMobile = window.screen.width <= 520;
+
 const navLinks = [
   {
     id: 'abilities',
-    title: 'Core Abilities',
+    title: {
+      de: 'Kernkompetenzen',
+      en: 'Core Abilities'
+    },
   },
   /*{
     id: 'tech',
@@ -63,13 +68,20 @@ const navLinks = [
   },*/
   {
     id: 'prof-exp',
-    title: 'Professional Experience',
+    title: {
+      de: 'Berufliche Erfahrungen',
+      en: 'Professional Experience'
+    },
   },
   {
     id: 'education',
-    title: 'Education',
+    title: {
+      de: 'Ausbildung',
+      en: 'Education'
+    },
   },
 ]
+
 
 const headerButtonData = [
   {
@@ -88,42 +100,94 @@ const headerButtonData = [
   },
 ]
 
+const homeSubTitles = {
+  left: {
+    de: "AI & ML Experte",
+    en: "AI & ML Expert",
+  },
+  right: {
+    de: "Software Entwickler",
+    en: "Software Developer"
+  }
+}
+
+const homeHighlightWords = {
+  de: ["kreativer", "proaktiver", "kollaborativer", "agiler", "strategischer"],
+  en: ["creative", "proactive", "collaborative", "agile", "strategic"],
+}
+
 const abilities = [
   {
     id: 'ai',
     iconUrl: AiIcon,
-    title: 'AI & Machine Learning',
-    description: 'End-to-end development of any architecture and modality.',
+    title: {
+      de: 'AI & Machine Learning',
+      en: 'AI & Machine Learning',
+    },
+    description: {
+      de: 'End-to-End-Entwicklung für jede Architektur und Modalität.',
+      en: 'End-to-end development of any architecture and modality.'
+    },
   },
   {
     id: 'web',
     iconUrl: WebIcon,
-    title: 'Web Development',
-    description: 'Building scalable, high-performance web applications with modern frameworks and responsive design.',
+    title: {
+      de: 'Web- entwicklung',
+      en: 'Web Development'
+    },
+    description: {
+      de: 'Entwicklung skalierbarer, performanter Webanwendungen mit modernen Frameworks und Responsive Design.',
+      en: 'Building scalable, high-performance web applications with modern frameworks and responsive design.'
+    },
   },
   {
     id: 'software',
     iconUrl: ArchIcon,
-    title: 'Software Architecture',
-    description: 'Designing robust, modular, and maintainable systems tailored for long-term growth and stability.',
+    title: {
+      de: 'Software- architektur',
+      en: 'Software Architecture'
+    },
+    description: {
+      de: 'Konzeption nachhaltiger und skalierbarer Systemarchitekturen für komplexe Softwareprojekte.',
+      en: 'Designing robust, modular, and maintainable systems tailored for long-term growth and stability.'
+    },
   },
   {
     id: 'creative',
     iconUrl: CreativeIcon,
-    title: 'Creative Design',
-    description: 'Bridging the gap between technical logic and user-centric aesthetics',
+    title: {
+      de: 'Kreatives Design',
+      en: 'Creative Design'
+    },
+    description: {
+      de: 'Die perfekte Balance zwischen technischer Logik und nutzerzentrierter Ästhetik',
+      en: 'Bridging the gap between technical logic and user-centric aesthetics.'
+    },
   },
   {
     id: 'data',
     iconUrl: DataIcon,
-    title: 'Data Solutions',
-    description: 'Transforming raw data into actionable insights through efficient pipelines and advanced visualization.',
+    title: {
+      de: 'Data Solutions',
+      en: 'Data Solutions'
+    },
+    description: {
+      de: 'Die Umwandlung von Rohdaten in wertvolle Erkenntnisse mittels effizienter Datenpipelines und moderner Visualisierungen.',
+      en: 'Transforming raw data into actionable insights through efficient pipelines and advanced visualization.'
+    },
   },
   {
     id: 'future',
     iconUrl: FutureIcon,
-    title: 'Future Technology',
-    description: 'Bridging the gap between experimental research and practical, high-impact business applications.',
+    title: {
+      de: 'Zukunfts- technologien',
+      en: 'Future Technology'
+    },
+    description: {
+      de: 'Wissenschaftliche Erkenntnisse übersetzt in hochperformante Software für reale Anwendungen.',
+      en: 'Bridging the gap between experimental research and practical, high-impact business applications.'
+    },
   },
 ]
 
@@ -282,14 +346,27 @@ const techMap = {
 
 const expEntryList = [
   {
-    location: "Tokyo, Japan",
+    location: {
+      de: "Tokyo, Japan",
+      en: "Tokyo, Japan"
+    },
     date: "07/2023 - 09/2023",
-    title: "AI Developer & Researcher at Kicoetech (キコエテック) LLC.",
-    description: [
-      "End‑to‑end development of a neural network for real‑time ##*~drone‑audio denoising##, from prototyping to optimized inference",
-      "Large‑scale ##*~training and refinement of CNN models## on several hundred hours of audio recordings",
-      "Implementation of a training and evaluation dashboard, including ##*~live experiment tracking## and integration with a local GPU cluster"
-    ],
+    title: {
+      de: "KI-Entwickler & Forscher bei Kicoetech (キコエテック) LLC.",
+      en: "AI Developer & Researcher at Kicoetech (キコエテック) LLC."
+    },
+    description: {
+      de: [
+        "End-to-End-Entwicklung eines neuronalen Netzes für Echtzeit-##*~Drohnen-Audio-Denoising## vom Prototyp bis zur optimierten Inference",
+        "Umfassendes ##*~Training und Finetuning von CNN-Modellen## auf Basis von mehreren hundert Stunden Audiomaterial",
+        "Implementierung eines Dashboards für Training und Evaluation, inklusive ##*~Live-Experiment-Tracking## und Anbindung an einen lokalen GPU-Cluster"
+      ],
+      en: [
+        "End‑to‑end development of a neural network for real‑time ##*~drone‑audio denoising##, from prototyping to optimized inference",
+        "Large‑scale ##*~training and refinement of CNN models## on several hundred hours of audio recordings",
+        "Implementation of a training and evaluation dashboard, including ##*~live experiment tracking## and integration with a local GPU cluster"
+      ]
+    },
     techStack: ["python", "tensorflow", "pandas", "numpy", "django", "celery", "js", "plotlyjs", "redis", "docker", "sqlite", "html", "css"],
     imageData: [
       {
@@ -316,15 +393,29 @@ const expEntryList = [
     extraClass: "",
   },
   {
-    location: "Braunschweig, Germany",
+    location: {
+      de: "Braunschweig, Deutschland",
+      en: "Braunschweig, Germany"
+    },
     date: "05/2021 - 03/2023",
-    title: "Web Developer at Institute of Machine Tools and Production Technology, TU Braunschweig",
-    description: [
-      "In the scope of the Sim4Pro project",
-      "##*~Front‑ and backend development## of a web‑based platform for running and analyzing simulations of sustainable battery cell systems",
-      "Optimization of existing simulation workflows to ##*~improve user experience## and significantly reduce execution time",
-      "##*~Integration of complex numerical and particle‑based simulations## with support for hundreds of input parameters and rich visual outputs (histograms, pie charts, large data tables, 3D plots)"
-    ],
+    title: {
+      de: "Web-Entwickler am Institut für Werkzeugmaschinen und Fertigungstechnik, TU Braunschweig",
+      en: "Web Developer at Institute of Machine Tools and Production Technology, TU Braunschweig"
+    },
+    description: {
+      de: [
+        "Im Rahmen des Sim4Pro-Projekts",
+        "##*~Full-Stack-Entwicklung## einer Web-Plattform zur Simulation und Analyse nachhaltiger Batteriezellsysteme",
+        "Workflow-Optimierung bestehender Simulationen für eine ##*~bessere User Experience## und spürbar kürzere Laufzeiten",
+        "##*~Anbindung komplexer numerischer und partikelbasierter Simulationen## mit hunderten Eingabeparametern sowie visuellen Ausgaben wie Histogrammen, Tabellen und 3D-Plots"
+      ],
+      en: [
+        "In the scope of the Sim4Pro project",
+        "##*~Front‑ and backend development## of a web‑based platform for running and analyzing simulations of sustainable battery cell systems",
+        "Optimization of existing simulation workflows to ##*~improve user experience## and significantly reduce execution time",
+        "##*~Integration of complex numerical and particle‑based simulations## with support for hundreds of input parameters and rich visual outputs (histograms, pie charts, large data tables, 3D plots)"
+      ]
+    },
     techStack: ["python", "django", "celery", "dash", "pandas", "numpy", "js", "html", "css", "redis", "docker", "sqlite"],
     imageData: [
       {
@@ -345,14 +436,27 @@ const expEntryList = [
     extraClass: "",
   },
   {
-    location: "Braunschweig, Germany",
+    location: {
+      de: "Braunschweig, Deutschland",
+      en: "Braunschweig, Germany"
+    },
     date: "05/2022 - 08/2022",
-    title: "Voluntary Web Developer for Art Club DALI e.V.",
-    description: [
-      "End‑to‑end development of the website, from ##*~design to deployment##",
-      "Custom admin panel with secure login and full ##*~content management## capabilities",
-      "Ensured a ##*~clean, scalable codebase## to support future features and long‑term maintainability"
-    ],
+    title: {
+      de: "Ehrenamtlicher Web-Entwickler für den Kunstverein DALI e.V.",
+      en: "Voluntary Web Developer for Art Club DALI e.V."
+    },
+    description: {
+      de: [
+        "End-to-End-Entwicklung der Website, vom ##*~Design bis zum Deployment##",
+        "Maßgeschneidertes Admin-Panel mit sicherem Login und vollständigen Funktionen für das ##*~Content-Management##",
+        "Gewährleistung einer ##*~sauberen, skalierbaren Codebasis## für zukünftige Features und langfristige Wartbarkeit"
+      ],
+      en: [
+        "End‑to‑end development of the website, from ##*~design to deployment##",
+        "Custom admin panel with secure login and full ##*~content management## capabilities",
+        "Ensured a ##*~clean, scalable codebase## to support future features and long‑term maintainability"
+      ]
+    },
     techStack: ["python", "django", "js", "animejs", "html", "css", "sqlite", "php", "figma"],
     imageData: [
       {
@@ -379,29 +483,80 @@ const expEntryList = [
 const educationEntryList = [
   {
     date: "10/2022 - 03/2026",
-    studyField: "Master of Science in Computer Science",
-    location: "TU Braunschweig, Germany",
-    extra: "Master's Thesis: Embedding Space Optimization for  Language-based Audio Retrieval"
+    studyField: {
+      de: "Master of Science in Informatik",
+      en: "Master of Science in Computer Science"
+    },
+    location: {
+      de: "TU Braunschweig, Deutschland",
+      en: "TU Braunschweig, Germany"
+    },
+    extra: {
+      de: "Masterarbeit: Embedding Space Optimization for Language-based Audio Retrieval",
+      en: "Master's Thesis: Embedding Space Optimization for Language-based Audio Retrieval"
+    }
   },
   {
     date: "10/2023 - 10/2024",
-    studyField: "Study Abroad – Master of Science in Computer Science",
-    location: "Shizuoka University, Hamamatsu, Japan",
-    extra: ""
+    studyField: {
+      de: "Auslandsstudium – Master of Science in Informatik",
+      en: "Study Abroad – Master of Science in Computer Science"
+    },
+    location: {
+      de: "Shizuoka University, Hamamatsu, Japan",
+      en: "Shizuoka University, Hamamatsu, Japan"
+    },
+    extra: {
+      de: "",
+      en: ""
+    }
   },
   {
     date: "10/2018 - 11/2022",
-    studyField: "Bachelor of Science in Computer Science",
-    location: "TU Braunschweig, Germany",
-    extra: "Bachelor's Thesis: Exploration and analysis of in-home  sensor data using machine learning by example of the  BASIS project"
+    studyField: {
+      de: "Bachelor of Science in Informatik",
+      en: "Bachelor of Science in Computer Science"
+    },
+    location: {
+      de: "TU Braunschweig, Deutschland",
+      en: "TU Braunschweig, Germany"
+    },
+    extra: {
+      de: "Bachelorarbeit: Exploration und Analyse häuslicher Sensordaten durch maschinelle Lernverfahren am Beispiel des BASIS Projektes",
+      en: "Bachelor's Thesis: Exploration and analysis of in-home  sensor data using machine learning by example of the  BASIS project"
+    }
   },
    {
     date: "2010 - 2018",
-    studyField: "General Qualification for University Entrance (Abitur)",
-    location: "Gymnasium Hoffman-von-Fallersleben-Schule, Braunschweig, Germany",
-    extra: ""
+    studyField: {
+      de: "Abitur",
+      en: "General Qualification for University Entrance (Abitur)"
+    },
+    location: {
+      de: "Gymnasium Hoffman-von-Fallersleben-Schule, Braunschweig, Deutschland",
+      en: "Gymnasium Hoffman-von-Fallersleben-Schule, Braunschweig, Germany"
+    },
+    extra: {
+      de: "",
+      en: ""
+    }
   },
 ]
+
+const footerText = {
+  imprint: {
+    de: "Impressum",
+    en: "Imprint"
+  },
+  privacy: {
+    de: "Datenschutz",
+    en: "Privacy Policy"
+  },
+  tech: {
+    de: "Entwickelt mit:",
+    en: "Website made using:"
+  }
+}
 
 const websiteTechStack = [
   "react", "figma", "gsap", "lenis", "motion", "css"
@@ -416,16 +571,19 @@ const showAnimationMarkers = {
   footer: false,
 };
 
-const isMobile = window.screen.width <= 520;
+
 
 export {
   navLinks,
   headerButtonData,
+  homeSubTitles,
+  homeHighlightWords,
   abilities,
   wordCloudData,
   techMap,
   expEntryList,
   educationEntryList,
+  footerText,
   websiteTechStack,
   showAnimationMarkers,
   isMobile,

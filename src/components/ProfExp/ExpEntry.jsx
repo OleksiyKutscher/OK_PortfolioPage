@@ -20,7 +20,7 @@ export default function ExpEntry(
   const techStackRef = useRef(null);
 
   useGSAP(() => {
-    const isMobile = window.screen.width <= 520;
+    const isMobile = window.innerWidth <= 520;
     // image animations
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -40,8 +40,6 @@ export default function ExpEntry(
       ease: "linear"
     })
     // text animation
-    const headerSplit = new SplitText(headerRef.current, {type: 'chars, words'});
-    const titleSplit = new SplitText(titleRef.current, {type: 'chars, words'});
     const tl2 = gsap.timeline({
       scrollTrigger: {
         trigger: textContainerRef.current,
@@ -63,9 +61,21 @@ export default function ExpEntry(
         ease: "linear",
       },
     }
-    tl2.from(headerSplit.words, {
-      ...textAnimation,
-    })
+    if (isMobile) {
+      headerRef.current.querySelectorAll("span").forEach(element => {
+        const split = new SplitText(element, {type: 'words'});
+        tl2.from(split.words, {
+          ...textAnimation,
+        })
+      })
+    } else {
+      const headerSplit = new SplitText(headerRef.current, {type: 'chars, words'});
+      tl2.from(headerSplit.words, {
+        ...textAnimation,
+      })
+    }
+
+    const titleSplit = new SplitText(titleRef.current, {type: 'chars, words'});
     tl2.from(titleSplit.words, {
       ...textAnimation,
     })
@@ -105,7 +115,7 @@ export default function ExpEntry(
         ...textAnimation
       })
     })
-    if (window.screen.width >= 767) {
+    if (window.innerWidth >= 767) {
         gsap.to({},{
         scrollTrigger: {
           trigger: cardContainerRef.current,
@@ -147,7 +157,11 @@ export default function ExpEntry(
         })}
       </div>
       <div className="exp-text-container" ref={textContainerRef}>
-        <div className="exp-header" ref={headerRef}>{location + " • " + date}</div>
+        <div className="exp-header" ref={headerRef}>
+          <span>{location}</span>
+          <span className="dot">{" • "}</span>
+          <span>{date}</span>
+        </div>
         <h2 className="exp-title" ref={titleRef}>{title}</h2>
         <ul className="exp-description" ref={descriptionContainerRef}>
           {description.map((sentence, index) => {

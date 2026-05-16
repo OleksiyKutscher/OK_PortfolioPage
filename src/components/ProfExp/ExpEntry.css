@@ -131,11 +131,8 @@
 
 }
 
-@media screen and (max-width: 767px) {
-    .experience-card {
-        margin-bottom: 5vh;
-    }
-}
+
+
 @media screen and (max-width: 1024px) {
     .experience-card {
         grid-template-columns: 1fr;
@@ -179,5 +176,28 @@
 @media screen and (min-width: 1560px) {
     .adjust-height {
         height: 80vh;
+    }
+}
+
+
+
+@media screen and (max-width: 767px) {
+    .experience-card {
+        margin-bottom: 5vh;
+    }
+
+    .dali-ref {
+        height: 20vh;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .exp-header {
+        display: flex;
+        flex-direction: column;
+
+        & > .dot {
+            display: none;
+        }
     }
 }

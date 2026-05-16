@@ -1,17 +1,26 @@
-import {useRef} from "react";
+import {useEffect, useRef, useState} from "react";
 import "./Abilities.css";
 import gsap from "gsap";
 import {useGSAP} from "@gsap/react";
 import AbilityCard from "./AbilityCard.jsx";
-import {abilities, showAnimationMarkers} from "../../../constants/index.js";
+import {abilities, isMobile, navLinks, showAnimationMarkers} from "../../../constants/index.js";
 
 import {createTitleAnimation} from "../../animations/index.js";
 
 
-export default function Abilities() {
+export default function Abilities({language}) {
   const abilityContainerRef = useRef(null);
   const titleRef = useRef(null);
   const cardContainerRef = useRef(null);
+
+  const [titleText, setTitleText] = useState(() => {
+    const isMobile = window.innerWidth <= 520;
+    if (language === "de") {
+      return isMobile ? "Kern- kompetenzen" : navLinks[0].title[language];
+    } else {
+      return navLinks[0].title[language];
+    }
+  });
 
   useGSAP(() => {
     /*
@@ -75,10 +84,10 @@ export default function Abilities() {
 
   return (
     <section id='abilities' className="vh-section abilities-container" ref={abilityContainerRef}>
-      <h1 ref={titleRef}>Core Abilities</h1>
+      <h1 ref={titleRef}>{titleText}</h1>
       <div className='card-container' ref={cardContainerRef}>
         {abilities.map((ability) => (
-          <AbilityCard key={ability.id} iconUrl={ability.iconUrl} title={ability.title} description={ability.description} />
+          <AbilityCard key={ability.id} iconUrl={ability.iconUrl} title={ability.title[language]} description={ability.description[language]} />
         ))}
       </div>
     </section>
