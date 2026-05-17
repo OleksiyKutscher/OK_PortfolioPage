@@ -30,6 +30,7 @@ export default function MainContent({showLoading}) {
   };
   const codeRef = useRef(null);
   const spotlightRef = useRef(null);
+  const mainRef = useRef(null);
 
   const lenisRef = useRef()
 
@@ -71,7 +72,35 @@ export default function MainContent({showLoading}) {
       //stagger: -0.07,
     },0)
 
-  }, [codeRef]);
+    // 2. GSAP anweisen, die Höhenberechnung neu zu starten
+    ScrollTrigger.refresh();
+
+    // 3. Den ScrollTrigger Loop erstellen
+    const loop = ScrollTrigger.create({
+      trigger: mainRef.current,
+      start: "top top",
+      end: "bottom bottom",
+      onLeave: () => {
+        /*if (lenisRef.current?.lenis) {
+          // Sprung zu Pixel 1 ohne Animation (instant: true)*/
+        lenisRef.current?.lenis?.scrollTo(1, { immediate: true });
+        /*} else {
+          window.scrollTo(0, 1);
+        }*/
+        ScrollTrigger.update();
+      },
+      onLeaveBack: () => {
+        const maxScroll = ScrollTrigger.maxScroll(window);
+        /*if (lenisRef.current?.lenis) {
+          // Sprung ans Ende ohne Animation*/
+        lenisRef.current?.lenis?.scrollTo(maxScroll - 1, { immediate: true });
+        /*} else {
+          window.scrollTo(0, maxScroll - 1);
+        }*/
+        ScrollTrigger.update();
+      }
+    });
+  }, [codeRef, mainRef]);
   return (
     <>
       {/*<div className="top-glow"/>*/}
@@ -80,7 +109,7 @@ export default function MainContent({showLoading}) {
 
       {/*<div id="smooth-wrapper">
         <div id="smooth-content">*/}
-      <main id="content" className="content-container">
+      <main id="content" className="content-container" ref={mainRef}>
         <div className="code-img-container" style={{backgroundImage: `url(${CodeImg})`, backgroundSize: "100%"}} ref={codeRef}>
 
           {/*<img src={CodeImg} alt="code" ref={portraitRef}/>*/}
