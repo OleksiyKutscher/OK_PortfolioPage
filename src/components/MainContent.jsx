@@ -13,7 +13,7 @@ import TechStack from "./TechStack/TechStack.jsx";
 import ProfExp from "./ProfExp/ProfExp.jsx";
 import Education from "./Education/Education.jsx";
 import Footer from "./Footer.jsx";
-import { ReactLenis } from 'lenis/react'
+import {ReactLenis, useLenis} from 'lenis/react'
 import {showAnimationMarkers} from "../../constants/index.js";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -33,6 +33,12 @@ export default function MainContent({showLoading}) {
   const mainRef = useRef(null);
 
   const lenisRef = useRef()
+  //const lenis = useLenis();
+  //const [scrolledToEnd, setScrolledToEnd] = useState(false);
+   // 1. Zustand steuert, ob der Loop aktiv ist oder nicht
+  //const [isInfinite, setIsInfinite] = useState(false);
+  //const [scrollMode, setScrollMode] = useState("normal"); // "normal" oder "infinite"
+
 
   //const [showLoading, setShowLoading] = useState(true);
 
@@ -47,9 +53,10 @@ export default function MainContent({showLoading}) {
       //document.body.classList.remove("stop-scrolling");
       lenisRef.current?.lenis?.start();
       gsap.ticker.add(update)
+      //lenisRef.current?.lenis?.on('scroll', ScrollTrigger.update);
     }
     return () => gsap.ticker.remove(update)
-  }, [showLoading])
+  }, [showLoading, lenisRef])
 
   useGSAP(() => {
     const tl = gsap.timeline({
@@ -73,7 +80,9 @@ export default function MainContent({showLoading}) {
     },0)
 
     // 2. GSAP anweisen, die Höhenberechnung neu zu starten
-    ScrollTrigger.refresh();
+    /*ScrollTrigger.refresh();
+    // Maximale Scroll-Distanz der Seite ermitteln
+    const maxScroll = ScrollTrigger.maxScroll(window);
 
     // 3. Den ScrollTrigger Loop erstellen
     const loop = ScrollTrigger.create({
@@ -81,30 +90,93 @@ export default function MainContent({showLoading}) {
       start: "top top",
       end: "bottom bottom",
       onLeave: () => {
-        /*if (lenisRef.current?.lenis) {
-          // Sprung zu Pixel 1 ohne Animation (instant: true)*/
-        lenisRef.current?.lenis?.scrollTo(1, { immediate: true });
-        /*} else {
+        if (lenisRef.current?.lenis) {
+          // Sprung zu Pixel 1 ohne Animation (instant: true)
+          lenisRef.current?.lenis?.scrollTo(1, {
+            immediate: true,
+            lock: true,
+            force: true
+          });
+          setScrolledToEnd(true);
+        } else {
           window.scrollTo(0, 1);
-        }*/
+        }
         ScrollTrigger.update();
       },
       onLeaveBack: () => {
-        const maxScroll = ScrollTrigger.maxScroll(window);
-        /*if (lenisRef.current?.lenis) {
-          // Sprung ans Ende ohne Animation*/
-        lenisRef.current?.lenis?.scrollTo(maxScroll - 1, { immediate: true });
-        /*} else {
-          window.scrollTo(0, maxScroll - 1);
-        }*/
-        ScrollTrigger.update();
+        if (scrolledToEnd) {
+           //const maxScroll = ScrollTrigger.maxScroll(window);
+          if (lenisRef.current?.lenis) {
+            // Sprung ans Ende ohne Animation
+            lenisRef.current?.lenis?.scrollTo(maxScroll - 1, {
+              immediate: true,
+              lock: true,
+              force: true
+            });
+          } else {
+            window.scrollTo(0, maxScroll - 1);
+          }
+          ScrollTrigger.update();
+        }
+      }
+    });*/
+
+    /*ScrollTrigger.refresh();
+
+    // 1. Wenn der Loop durch das Erreichen des Endes freigeschaltet wird
+    const endTrigger = ScrollTrigger.create({
+      trigger: mainRef.current,
+      start: "top top",
+      end: "bottom bottom",
+      onLeave: () => {
+        setScrolledToEnd(true); // Schaltet das freie Scrollen in alle Richtungen frei
+        endTrigger.kill();
       }
     });
+    const blockScrollUp = (e) => {
+      if (scrolledToEnd) return;
+
+      // Erkennt, ob der Nutzer nach oben scrollen will (Mausrad oder Touch-Geste)
+      const isScrollingUp = e.deltaY < 0 || (e.touches && e.changedTouches[0]?.clientY > 0);
+
+      // Wenn man sich am Start (Pixel 0) befindet und nach oben will -> Event killen!
+      if (window.scrollY <= 1 && isScrollingUp) {
+        console.log("test")
+        e.preventDefault();
+        e.stopPropagation();
+        lenisRef.current?.lenis?.scrollTo(0, { immediate: true });
+        document.body.classList.add("stop-scrolling");
+      } else {
+        document.body.classList.remove("stop-scrolling");
+      }
+    };
+
+    // Native Browser-Events abfangen (muss { passive: false } sein, um preventDefault zu erlauben)
+    window.addEventListener('wheel', blockScrollUp, { passive: false });
+    window.addEventListener('touchmove', blockScrollUp, { passive: false });
+    console.log(scrolledToEnd);
+    //lenisRef.current?.lenis?.on('scroll', handleScroll);
+    return () => {
+      endTrigger.kill();
+      //lenisRef.current?.lenis?.off('scroll', handleScroll);
+      window.removeEventListener('wheel', blockScrollUp);
+      window.removeEventListener('touchmove', blockScrollUp);
+    }*/
   }, [codeRef, mainRef]);
+
+
   return (
     <>
       {/*<div className="top-glow"/>*/}
-      <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
+      <ReactLenis
+        root
+        options={{
+          //infinite: true, // Schaltet den unendlichen Seiten-Loop nativ ein!
+          //syncTouch: true, // Erlaubt den Loop auch auf Smartphones/Touch-Geräten
+          autoRaf: false,
+        }}
+        ref={lenisRef}
+      />
       <Header language={language} updateLanguage={() => handleLanguageChange(language === 'de' ? 'en' : 'de')} />
 
       {/*<div id="smooth-wrapper">

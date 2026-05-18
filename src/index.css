@@ -171,3 +171,14 @@ p {
   }
 }
 
+/*html.lenis, html.lenis body {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important; /* Verhindert, dass Chrome versucht, den Sprung weich zu animieren
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}*/
