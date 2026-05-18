@@ -4,7 +4,7 @@ import Portrait from "./Home/Portrait.jsx";
 import Home from './Home/Home.jsx';
 import AboutMe from './AboutMe/AboutMe.jsx';
 import Abilities from './Abilities/Abilities.jsx';
-import {useContext, useEffect, useRef} from "react";
+import {useContext, useEffect, useRef, useState} from "react";
 import {useGSAP} from "@gsap/react";
 import gsap from "gsap";
 import {SplitText, ScrollTrigger} from "gsap/all";
@@ -14,82 +14,113 @@ import ProfExp from "./ProfExp/ProfExp.jsx";
 import Education from "./Education/Education.jsx";
 import Footer from "./Footer.jsx";
 import { ReactLenis } from 'lenis/react'
+import {showAnimationMarkers} from "../../constants/index.js";
 
 gsap.registerPlugin(ScrollTrigger);
 
-export default function MainContent() {
-  const masterTl = useRef(gsap.timeline({ paused: true }));//useContext(MasterTimelineContext);
+export default function MainContent({showLoading}) {
+  const [language, setLanguage] = useState(() => {
+    return localStorage.getItem('portfolio_lang') || 'de';
+  })
+  const handleLanguageChange = (newLang) => {
+    // 1. Sprache im Browser dauerhaft speichern
+    localStorage.setItem('portfolio_lang', newLang);
+    // 2. Seite neu laden (GSAP startet frisch, liest oben den gespeicherten Wert)
+    window.location.reload();
+  };
   const codeRef = useRef(null);
   const spotlightRef = useRef(null);
+  const mainRef = useRef(null);
 
   const lenisRef = useRef()
+
+  //const [showLoading, setShowLoading] = useState(true);
 
   useEffect(() => {
     function update(time) {
       lenisRef.current?.lenis?.raf(time * 1000)
     }
 
-    gsap.ticker.add(update)
-
+    if (showLoading) {
+      lenisRef.current?.lenis?.stop();
+    } else {
+      //document.body.classList.remove("stop-scrolling");
+      lenisRef.current?.lenis?.start();
+      gsap.ticker.add(update)
+    }
     return () => gsap.ticker.remove(update)
-  }, [])
+  }, [showLoading])
 
   useGSAP(() => {
-    /*let smoother = ScrollSmoother.create({
-      smooth: 2,
-      effects: true,
-      normalizeScroll: true
-    });*/
-
-    /*ScrollTrigger.create({
-      trigger: spotlightRef.current,
-      pin: true,           // Keeps it "fixed" during scroll
-      start: "top top",    // When the top of element hits top of viewport
-      end: "max",
-      pinSpacing: false    // Prevents pushing other content down
-    });*/
-    //spotlightRef.current.parentElement.style.position = "fixed";
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: '#content',
         start: 'top top',
-        end: 'bottom top',
+        end: 'bottom bottom',
         scrub: true,
-        //markers: true
+        markers: showAnimationMarkers.mainContent
       }
     });
     tl.to(codeRef.current, {
       x: 0,
-      y: "-20vw",
+      y: "-300vh",
       scale: 1,
       //rotation: 720,
-      ease: 'expo.out',
+      ease: 'linear',
       delay: 0.0,
       //duration: 0.3,
       //stagger: -0.07,
     },0)
-    masterTl.current.add(tl);
-  }, [masterTl, codeRef]);
+
+    // 2. GSAP anweisen, die Höhenberechnung neu zu starten
+    ScrollTrigger.refresh();
+
+    // 3. Den ScrollTrigger Loop erstellen
+    const loop = ScrollTrigger.create({
+      trigger: mainRef.current,
+      start: "top top",
+      end: "bottom bottom",
+      onLeave: () => {
+        /*if (lenisRef.current?.lenis) {
+          // Sprung zu Pixel 1 ohne Animation (instant: true)*/
+        lenisRef.current?.lenis?.scrollTo(1, { immediate: true });
+        /*} else {
+          window.scrollTo(0, 1);
+        }*/
+        ScrollTrigger.update();
+      },
+      onLeaveBack: () => {
+        const maxScroll = ScrollTrigger.maxScroll(window);
+        /*if (lenisRef.current?.lenis) {
+          // Sprung ans Ende ohne Animation*/
+        lenisRef.current?.lenis?.scrollTo(maxScroll - 1, { immediate: true });
+        /*} else {
+          window.scrollTo(0, maxScroll - 1);
+        }*/
+        ScrollTrigger.update();
+      }
+    });
+  }, [codeRef, mainRef]);
   return (
     <>
       {/*<div className="top-glow"/>*/}
       <ReactLenis root options={{ autoRaf: false }} ref={lenisRef} />
-      <Header />
+      <Header language={language} updateLanguage={() => handleLanguageChange(language === 'de' ? 'en' : 'de')} />
 
       {/*<div id="smooth-wrapper">
         <div id="smooth-content">*/}
-      <main id="content" className="content-container">
+      <main id="content" className="content-container" ref={mainRef}>
         <div className="code-img-container" style={{backgroundImage: `url(${CodeImg})`, backgroundSize: "100%"}} ref={codeRef}>
 
           {/*<img src={CodeImg} alt="code" ref={portraitRef}/>*/}
         </div>
         <div className="bg-spotlight" ref={spotlightRef}/>
-        <Home masterTl={masterTl} />
-        <Abilities masterTl={masterTl} />
-        <TechStack maasterTl={masterTl} />
-        <ProfExp masterTl={masterTl} />
-        <Education masterTl={masterTl} />
-        <Footer masterTl={masterTl} />
+        <Home language={language} />{/*onAnimationComplete={() => setShowLoading(false)}*/}
+        <Abilities language={language} />
+         {/*<TechStack />*/}
+        <ProfExp language={language} />
+        <Education language={language} />
+        <Footer language={language} />
         {/*<div className="technical-grid">
 
           <div style={{ marginTop: '100vh', width:'100px', height:'100px', backgroundColor: "red" }}></div>

@@ -1,6 +1,7 @@
 .abilities-container {
     flex-direction: column;
     align-items: center;
+    overflow: visible !important;
 }
 
 .card-container {

@@ -1,20 +1,88 @@
 import './Footer.css';
 import Modal from "./Modal";
-import {websiteTechStack} from "../../constants/index.js";
+import {footerText, showAnimationMarkers, websiteTechStack} from "../../constants/index.js";
 import TechElement from "./TechElement.jsx";
-import {useState} from "react";
+import {useRef, useState} from "react";
+import AdressImg from "../assets/images/imprint/address.png";
+import EmailImg from "../assets/images/imprint/email.png";
+import TelImg from "../assets/images/imprint/tel.png";
+import {useGSAP} from "@gsap/react";
+import gsap from "gsap";
 
-export default function Footer({masterTl}) {
+
+export default function Footer({language}) {
   const [isImpressumModalOpen, setImpressumModalOpen] = useState(false);
   const [isDatenschutzModalOpen, setDatenschutzModalOpen] = useState(false);
+
+  const policyContainerRef = useRef(null);
+  const techContainerRef = useRef(null);
+  const footerRef = useRef(null);
+
+  useGSAP(() => {
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: footerRef.current,
+        //pin: true,
+        start: "top bottom",
+        end: "bottom bottom",
+        scrub: true,
+        markers: showAnimationMarkers.footer,
+        id: "footer"
+      }
+    });
+    tl.from(policyContainerRef.current, {
+      opacity: 0,
+      x: -100,
+      stagger: 0.05,
+      ease: "expo.out",
+    }, 0);
+    tl.from(techContainerRef.current, {
+      opacity: 0,
+      x: 100,
+      stagger: 0.05,
+      ease: "expo.out",
+    }, 0);
+    /*[policyContainerRef.current, techContainerRef.current].forEach((element, index) => {
+      let rotationIndex = (index % 2 === 0) ? -1 : 1;
+      gsap.fromTo(element, {
+          opacity: 0.7,
+          rotationX: -45,     // Neigung nach hinten
+          rotationY: rotationIndex * -15,      // Leichte Seitendrehung
+          rotationZ: rotationIndex * -2,
+          //y: 100,             // Startposition weiter unten
+          //z: -100,            // Startposition in die Tiefe versetzt
+        },
+        {
+          opacity: 1,
+          rotationX: 0,       // Ziel-Rotation (flach)
+          rotationY: 0,
+          rotationZ: 0,
+          y: 0,
+          z: 0,
+          ease: "linear",
+          scrollTrigger: {
+            trigger: element,     // Jede Card triggert sich selbst
+            start: "top bottom",  // Animation startet, wenn die Card 85% im Viewport ist
+            end: "bottom bottom",    // Animation endet, wenn sie weiter oben ist
+            scrub: 1,          // 1 Sekunde sanftes Nachlaufen beim Scrollen
+            pin: true,
+            pinSpacing: true,
+            markers: showAnimationMarkers.footer,
+            id: "footer-rotation"
+          }
+        }
+      );
+    });*/
+  }, [footerRef, policyContainerRef, techContainerRef]);
+
   return (
-    <div className="footer">
-      <div className="policy-container">
-        <div className="policy-text" onClick={() => setImpressumModalOpen(true)}>Impressum / Imprint</div>
-        <div className="policy-text" onClick={() => setDatenschutzModalOpen(true)}>Datenschutz / Privacy Policy</div>
+    <div className="footer" ref={footerRef}>
+      <div className="policy-container" ref={policyContainerRef}>
+        <div className="policy-text" onClick={() => setImpressumModalOpen(true)}>{footerText.imprint[language]}</div>
+        <div className="policy-text" onClick={() => setDatenschutzModalOpen(true)}>{footerText.privacy[language]}</div>
       </div>
-      <div className="tech-stack">
-        <div className="">Website made using:</div>
+      <div className="tech-stack" ref={techContainerRef}>
+        <div className="">{footerText.tech[language]}</div>
         <div className="tech-container">
           {websiteTechStack.map((name, index) => (
             <TechElement key={index} name={name} />
@@ -30,13 +98,14 @@ export default function Footer({masterTl}) {
           <h3>Angaben gemäß § 5 DDG</h3>
           <h4>Name und Anschrift:</h4>
           <p>Oleksiy Kutscher</p>
-          <img src={null} alt="adresse"/> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
-          <p>Kontakt:</p>
-          <p>Telefon: [Deine Telefonnummer]</p>
-          <p>E-Mail: [Deine E-Mail-Adresse]</p>
+          <div className="imprint-img-container address-container"><img src={AdressImg} alt="adresse"/></div> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
+          <p>Telefon: </p>
+          <div className="imprint-img-container tel-container"><img src={TelImg} alt="tel"/></div>
+          <p>E-Mail: </p>
+          <div className="imprint-img-container"><img src={EmailImg} alt="email"/></div>
           <h3>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV:</h3>
           <p>Oleksiy Kutscher</p>
-          <img src={null} alt="adresse"/> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
+            <div className="imprint-img-container address-container"><img src={AdressImg} alt="adresse"/></div> {/*[Straße und Hausnummer][PLZ] [Ort]*/}
         </div>
         <div >
           <h2>Nutzungsbedingungen & Haftungsausschluss</h2>
@@ -56,12 +125,12 @@ export default function Footer({masterTl}) {
             Alle auf dieser Webseite veröffentlichten Inhalte (Texte, Bilder, Grafiken) unterliegen dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen meiner schriftlichen Zustimmung.
           </p>
         </div>
-        <div>
-          <h2>Bildnachweise</h2>
-          <p>Tokyo Tower: Foto von <a href="https://unsplash.com/de/@mattmutluu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Matt Mutlu</a> auf <a href="https://unsplash.com/de/fotos/die-spitze-des-eiffelturms-leuchtet-nachts-xn8ZPG6viiw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
-          <p>Drone: Foto von <a href="https://unsplash.com/de/@kevinchow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kevin Chow</a> auf <a href="https://unsplash.com/de/fotos/weisser-dji-quadcopter-der-phantom-serie-der-tagsuber-fliegt-9y0U_DEg0XI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
-          <p>Batteries: Foto von <a href="https://unsplash.com/de/@roberto_sorin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roberto Sorin</a> auf <a href="https://unsplash.com/de/fotos/braune-grune-und-blaue-runde-knopfe-ZZ3qxWFZNRg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
-        </div>
+
+        <h2 className="bildnachweise">Bildnachweise</h2>
+        <p>Tokyo Tower: Foto von <a target="_blank" href="https://unsplash.com/de/@mattmutluu?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Matt Mutlu</a> auf <a target="_blank" href="https://unsplash.com/de/fotos/die-spitze-des-eiffelturms-leuchtet-nachts-xn8ZPG6viiw?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        <p>Drone: Foto von <a target="_blank" href="https://unsplash.com/de/@kevinchow?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Kevin Chow</a> auf <a target="_blank" href="https://unsplash.com/de/fotos/weisser-dji-quadcopter-der-phantom-serie-der-tagsuber-fliegt-9y0U_DEg0XI?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        <p>Batteries: Foto von <a target="_blank" href="https://unsplash.com/de/@roberto_sorin?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Roberto Sorin</a> auf <a target="_blank" href="https://unsplash.com/de/fotos/braune-grune-und-blaue-runde-knopfe-ZZ3qxWFZNRg?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a></p>
+        <p>Code: Foto von Leonid Altman auf <a target="_blank" href="https://www.pexels.com/de-de/foto/netz-verschlusselung-programmierung-entwicklung-5125366/">Pexels</a></p>
 
       </Modal>
       <Modal
@@ -71,8 +140,16 @@ export default function Footer({masterTl}) {
       >
         <h3>1. Verantwortlicher</h3>
         <p>
-          Verantwortlich für die Datenverarbeitung auf dieser Website ist:Oleksiy Kutscher[Deine Adresse / oder c/o Anschrift]E-Mail: [Deine E-Mail-Adresse]
+          Verantwortlich für die Datenverarbeitung auf dieser Website ist:
         </p>
+        <p>
+          Oleksiy Kutscher
+        </p>
+        <div className="imprint-img-container address-container"><img src={AdressImg} alt="adresse"/></div>
+        <p>
+          E-Mail:
+        </p>
+        <div className="imprint-img-container"><img src={EmailImg} alt="email"/></div>
         <h3>2. Datenerfassung beim Besuch dieser Website (Server-Logfiles)</h3>
         <p>
           Bei jedem Aufruf dieser Webseite erfasst der Provider der Seiten automatisch Informationen in sogenannten Server-Logfiles, die Ihr Browser automatisch an uns übermittelt. Dies sind:Browsertyp und BrowserversionVerwendetes BetriebssystemReferrer URL (die zuvor besuchte Seite)Hostname des zugreifenden RechnersUhrzeit der ServeranfrageIP-AdresseDiese Daten sind technisch erforderlich, um die Website stabil und sicher anzuzeigen. Die Rechtsgrundlage für diese Verarbeitung ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse am Betrieb der Website).

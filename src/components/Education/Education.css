@@ -5,6 +5,7 @@
     align-items: center;
     gap: 4vw;
     margin-bottom: 8vh;
+    z-index: 300;
 }
 
 .education-entries {
@@ -17,6 +18,7 @@
     background-color: var(--neutral-color-0);
     border-radius: 30px;
     padding: 20px;
+    overflow: hidden;
 }
 
 @media screen and (max-width: 1354px) {
