@@ -6,6 +6,7 @@
     gap: 4vw;
     margin-bottom: 8vh;
     z-index: 300;
+    overflow: visible;
 }
 
 .education-entries {
